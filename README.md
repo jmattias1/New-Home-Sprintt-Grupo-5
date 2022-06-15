@@ -11,8 +11,12 @@ Maura Ruiz Diaz :
 Maximiliano Bazan :
 
 Referencias :
-https://holadecodistribuidora.com/,
-https://www.fravega.com/l/hogar/,
-https://www.perozzi.com.ar/,
-https://www.linio.com.mx/c/hogar,
-https://lowreyshop.com/collections/articulos-del-hogar
+https://holadecodistribuidora.com/: Por su sencilla interfaz
+
+https://www.fravega.com/l/hogar/: Por ser por una de las mas conocidas para articulos para la casa(en Argentina)
+
+https://www.perozzi.com.ar/: Bastante completa con muchos productos de todo tipo
+
+https://www.linio.com.mx/c/hogar: Una interfaz sencilla
+
+https://lowreyshop.com/collections/articulos-del-hogar: Muy sencilla y compacta
