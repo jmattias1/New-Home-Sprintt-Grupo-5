@@ -17,6 +17,6 @@ https://www.fravega.com/l/hogar/: Por ser por una de las mas conocidas para arti
 
 https://www.perozzi.com.ar/: Bastante completa con muchos productos de todo tipo
 
-https://www.linio.com.mx/c/hogar: Una interfaz sencilla
+https://www.linio.com.mx/c/hogar: Tiene mucho de las demas paginas sencilla y con muchos articulos
 
 https://lowreyshop.com/collections/articulos-del-hogar: Muy sencilla y compacta
