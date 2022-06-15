@@ -1,9 +1,12 @@
 ##### Proyecto Integrador #####
 
 Integrantes :
-Matias Risso : no me espreso muy bien pero soy sencillo,
+Matias Risso : no me espreso muy bien pero soy sencillo
+
 Daniel Gustavo Martinez Lozano :
+
 Maura Ruiz Diaz :
+
 Maximiliano Bazan :
 
 Referencias :
