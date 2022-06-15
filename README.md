@@ -1,5 +1,11 @@
 ##### Proyecto Integrador #####
 
+Integrantes :
+Matias Risso
+Daniel Gustavo Martinez Lozano
+Maura Ruiz Diaz
+Maximiliano Bazan
+
 Referencias :
 https://holadecodistribuidora.com/
 https://www.fravega.com/l/hogar/
