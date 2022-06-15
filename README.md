@@ -1,5 +1,5 @@
 ##### Proyecto Integrador #####
-   ## Nombre de Proyecto ##
+   ## New Home ##
 
 Integrantes :
 Matias Risso : no me espreso muy bien pero soy sencillo
