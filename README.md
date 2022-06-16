@@ -8,7 +8,7 @@ Daniel Gustavo Martinez Lozano :
 
 Maura Ruiz Diaz :
 
-Maximiliano Bazan :
+Maximiliano Bazan : Me encanta la musica, soy de San Miguel.
 
 Referencias :
 https://holadecodistribuidora.com/: Por su sencilla interfaz
@@ -20,3 +20,11 @@ https://www.perozzi.com.ar/: Bastante completa con muchos productos de todo tipo
 https://www.linio.com.mx/c/hogar: Tiene mucho de las demas paginas sencilla y con muchos articulos
 
 https://lowreyshop.com/collections/articulos-del-hogar: Muy sencilla y compacta
+
+
+Descripción de la oferta de productos:
+"New Home" es una importadora, distribuidora y mayorista argentina. Con una gran variedad de productos esenciales para el hogar.
+New Home, ofrece un servicio de ayuda a personas que quieren empezar a un nuevo emprendimiento o agrandar su negocio y así generar nuevos empleos.
+
+
+
