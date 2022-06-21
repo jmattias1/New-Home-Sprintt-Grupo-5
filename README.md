@@ -6,7 +6,7 @@ Matias Risso : no me espreso muy bien pero soy sencillo
 
 Daniel Gustavo Martinez Lozano : Me gusta hacer deportes, la musica y la informatica, soy de Escobar y tengo 20 años.
 
-Maura Ruiz Diaz :
+Maura Ruiz Diaz : Me gusta bailar, hacer deporte, la psicología, quiero seguir estudiando, tengo 20. 
 
 Maximiliano Bazan : Me encanta la musica, soy de San Miguel.
 
