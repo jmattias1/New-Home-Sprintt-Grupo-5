@@ -4,7 +4,7 @@
 Integrantes :
 Matias Risso : no me espreso muy bien pero soy sencillo
 
-Daniel Gustavo Martinez Lozano :
+Daniel Gustavo Martinez Lozano : Me gusta hacer deportes, la musica y la informatica, soy de Escobar y tengo 20 años.
 
 Maura Ruiz Diaz :
 
