@@ -1,14 +1,12 @@
-# *Sprint* 2 #
+# *Sprint* 3 #
 
-### HTML + CSS ###
-
-El Sprint 2 nos representó un gran desafío, el cual era plasmar sobre código la temática del sitio web y los bocetos ya definidos anteriormente en el Sprint 1. Tratamos de que sea estéticamente agradable, responsivo y que este bien enlazado. Para ello, utilizamos las metodologías agiles e implementamos un tablero de trabajo, el cual nos fue indispensable para realizar el seguimiento del proyecto y lograr así, trabajar de una forma más organizada.
+### TEMPLATE ENGINES ###
 
 Adjuntamos nuestro tablero y repositorio, el cual nos fue de gran ayuda para llevar a cabo nuestro trabajo:
 
 Trelo: https://trello.com/b/OnldXuwr/c16-grupo-5-new-home
 
-GitHub: https://github.com/jmattias1/New-Home-Sprint-2-Grupo-5.git
+GitHub: https://github.com/jmattias1/Trabajo_Grupo_5_New-Home
 
 
 ### Integrantes: ###
