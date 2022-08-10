@@ -74,6 +74,11 @@ a{
     padding: 10px;
 }
 
+.main__nav{
+    text-align: center;
+}
+
+
 /* outsidefooter */
 
 .outsidelogo{
