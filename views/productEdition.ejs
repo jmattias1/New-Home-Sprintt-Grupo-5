@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- HEAD -->
+<%- include('./partials/head') %>
+<body>
+    <!-- HEADER -->
+    <%- include('./partials/header') %>
+    <main class="main">
+    <section class="register__main__section">
+    <form action="" method="POST">
+        <div class="form__box__barra">
+            <label class="titulo">Nombre del Producto</label>
+            <input class="input" type="text" name="product" placeholder="Ingrese nombre del producto">
+        </div>
+        <div class="form__box__barra">
+            <label class="titulo">Descripción</label>
+            <input class="input" type="text" name="description" placeholder="Ingrese una descripcion del producto">
+        </div>
+        <div class="form__box__barra"> 
+            <label>Seleccione una imagen: </label>    
+            <input class="img" type="file" name="foto" accept=".jpg" >
+        </div>
+        <div class="form__box__barra">
+            <label class="titulo">Precio</label>
+            <input class="input" type="text" name="price" placeholder="Ingrese un precio">
+        </div>
+</form>         
+    </section>    
+    </main>    
+</body>
+
+<%- include('./partials/footer') %>
+
+</html>
