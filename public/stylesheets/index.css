@@ -142,24 +142,44 @@ header{
     }
 
     .header__nav{
+	    display: flex;
+    }
+    .menu-horizontal{
+        list-style: none;
         display: flex;
-        display: inline;
-        padding-top: 18px;
-        padding-right: 10px;
-        
+        justify-content: space-around;
     }
 
-    .header__nav__li{
-        display: inline;
-    }
-
-    .header__nav a{
-        text-decoration: none;
-        font-size: 17px;
-        margin-left: 20px;
+    .menu-horizontal > li > a{
+        display: block;
+        padding: 15px 20px;
         color: white;
-        
+        text-decoration: none;
     }
+
+    /* Header nav */
+
+.menu-vertical{
+	position: absolute;
+	display: none;
+	list-style: none;
+	background-color: rgba(114, 34, 62, .7);
+}
+
+.menu-horizontal li:hover .menu-vertical{
+	display: block;
+}
+
+.menu-vertical li:hover{
+	background-color: black;
+}
+
+.menu-vertical li a{
+	display: block;
+	color: white;
+	padding: 15px;
+}
+
 
 
     /* MAIN */
