@@ -11,17 +11,13 @@ router
     .get('/productCart', productCart)
     .get('/productAdd',productAdd)
     .get('/productEdition',productEdition)
-
+    .get('/productDetail',productDetail) 
     .get('/', productController.index)
-
     .get('/create',productController.create)
     .post('/store',productController.store)
-
     .get('/detail/:id', productController.detail)
-
     .get('/edit/:id', productController.edit)
     .put('/update/:id', productController.update)
-
     .delete('/delete/:id', productController.destroy)
 
 module.exports = router;
