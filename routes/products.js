@@ -4,7 +4,10 @@ var router = express.Router();
 const {productDetail, productCart,productAdd,productEdition} = require('../controllers/productController')
 
 /*/products */
-router  
+router 
+   
+     /*/con estos 3 nose q hacer si borralos o no */     
+
     .get('/productCart', productCart)
     .get('/productAdd',productAdd)
     .get('/productEdition',productEdition)

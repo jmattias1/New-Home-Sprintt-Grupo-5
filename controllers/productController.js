@@ -1,5 +1,7 @@
 const toThousand = n => n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 
+
+/*/falta codigo */
 controller = {
     productDetail : (req,res) => {
         return res.render('productDetail')   
