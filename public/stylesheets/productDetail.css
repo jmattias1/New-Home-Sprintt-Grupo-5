@@ -42,6 +42,10 @@ main h2{
     border: 1px solid #474545;
 }
 
+.more_img_box{
+    display: none;
+}
+
 .price {
     width: 90%;
     padding-left: 15px;
@@ -114,6 +118,10 @@ main h2{
     background-color: #ebebeb;
     border-radius: 5px;
     padding: 3px;
+}
+
+.caracteristicas {
+    display: none;
 }
 
 .description {

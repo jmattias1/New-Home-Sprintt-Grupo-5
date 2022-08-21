@@ -6,7 +6,8 @@
         "discount": 20,
         "image": "secarropas.jpg",
         "description": "lorem ipsum dolor amet sit.",
-        "section": "lo mejor"
+        "section": "lo mejor",
+        "type" : "lavado"
      },
      {
         "id": 2,
@@ -15,7 +16,8 @@
         "discount": 15,
         "image": "heladera.jpg",
         "description": "lorem ipsum dolor amet sit.",
-        "section": "lo mejor"
+        "section": "lo mejor",
+        "type" : "cocina"
      },
      {
         "id": 3,
@@ -24,7 +26,8 @@
         "discount": 20,
         "image":"lavarropas2.jpg",
         "description": "lorem ipsum dolor amet sit.",
-        "section": "lo mejor"
+        "section": "lo mejor",
+        "type" : "lavado"
      },
      {
         "id": 4,
@@ -33,7 +36,8 @@
         "discount": 10,
         "image": "ropero.jpg",
         "description": "lorem ipsum dolor amet sit.",
-        "section": "lo mejor"
+        "section": "lo mejor",
+        "type" : "muebles"
      },
      {
         "id": 5,
@@ -42,7 +46,8 @@
         "discount": 15,
         "image": "ventilador.jpg",
         "description": "lorem ipsum dolor amet sit.",
-        "section": "lo mejor"
+        "section": "lo mejor",
+        "type" : "climatizacion"
      },
      {
         "id": 6,
@@ -51,7 +56,8 @@
         "discount": 20,
         "image": "colchon.jpg",
         "description": "lorem ipsum dolor amet sit.",
-        "section": "lo mejor"
+        "section": "lo mejor",
+        "type" : "hogar"
      },
      {
         "id": 7,
@@ -60,7 +66,8 @@
         "discount": 30,
         "image":"cocina.jpg",
         "description": "lorem ipsum dolor amet sit.",
-        "section": "oferta"
+        "section": "oferta",
+        "type" : "cocina"
      },
      {
         "id": 8,
@@ -69,7 +76,8 @@
         "discount": 35,
         "image":"tostadora.png",
         "description": "lorem ipsum dolor amet sit.",
-        "section": "oferta"
+        "section": "oferta",
+        "type" : "cocina"
      },
      {
         "id": 9,
@@ -78,7 +86,8 @@
         "discount": 30,
         "image":"inodoro.jpg",
         "description": "lorem ipsum dolor amet sit.",
-        "section": "oferta"
+        "section": "oferta",
+        "type" : "hogar"
      },
      {
         "id": 10,
@@ -87,7 +96,8 @@
         "discount": 50,
         "image":"tacho.jpg",
         "description": "lorem ipsum dolor amet sit.",
-        "section": "oferta"
+        "section": "oferta",
+        "type" : "hogar"
      },
      {
         "id": 11,
@@ -96,7 +106,8 @@
         "discount": 40,
         "image":"sillon.jpg",
         "description": "lorem ipsum dolor amet sit.",
-        "section": "oferta"
+        "section": "oferta",
+        "type" : "hogar"
      },
      {
         "id": 12,
@@ -105,6 +116,7 @@
         "discount": 40,
         "image":"tv1.jpg",
         "description": "lorem ipsum dolor amet sit.",
-        "section": "oferta"
+        "section": "oferta",
+        "type" : "tv"
      }
 ]

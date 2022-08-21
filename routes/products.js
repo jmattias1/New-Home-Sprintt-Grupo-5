@@ -1,7 +1,7 @@
 var express = require('express');
-const productController = require('../controllers/productController');
+/* const productController = require('../controllers/productController'); */
 var router = express.Router();
-const {productDetail, productCart,productAdd,productEdition} = require('../controllers/productController')
+const {detail, productCart,productAdd,allproducts} = require('../controllers/productController')
 
 /*/products */
 router 
@@ -9,15 +9,14 @@ router
      /*/con estos 3 nose q hacer si borralos o no */     
 
     .get('/productCart', productCart)
+    .get('/allproducts', allproducts)
     .get('/productAdd',productAdd)
-    .get('/productEdition',productEdition)
-    .get('/productDetail',productDetail) 
-    .get('/', productController.index)
+    .get('/detail/:id',detail) 
+/*     .get('/', productController.index)
     .get('/create',productController.create)
     .post('/store',productController.store)
-    .get('/detail/:id', productController.detail)
     .get('/edit/:id', productController.edit)
     .put('/update/:id', productController.update)
-    .delete('/delete/:id', productController.destroy)
+    .delete('/delete/:id', productController.destroy) */
 
 module.exports = router;

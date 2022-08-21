@@ -5,8 +5,23 @@ const toThousand = n => n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 
 /*/falta codigo */
 controller = {
-    productDetail : (req,res) => {
-        return res.render('productDetail')   
+    allproducts : (req, res) => {
+        const products = JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'data', 'products.json')));
+        let type = products.filter(product =>  product.type === "tv");
+        return res.render('allproducts', {
+             title: 'Products',
+             toThousand,
+             type             
+    });
+  },
+    detail : (req,res) => {
+        const products = JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'data', 'products.json')));
+        const product = products.find(product => product.id === +req.params.id);
+
+        return res.render('productDetail',{
+            title : 'Detalle',
+            product
+        })
     },
     productCart : (req,res) => {
         return res.render('productCart',{

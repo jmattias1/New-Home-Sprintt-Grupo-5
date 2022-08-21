@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="es">
+
+    <%- include('./partials/head') %> 
+
+
+<body class="result">
+    <%- include('./partials/header') %> 
+    <main class="main">
+        <% type.forEach(({id,title, image,discount,price}) => { %>
+			<div class="main__section__caja">
+			<a href="#"><img  class ="main__section__img" src="/img/<%= image %>" alt=""></a>
+			<div class="main__section__texto">
+			<h5><%= title %> </h5>
+			<p class="">$<%= price %> </p>
+			<p class=""><%= discount %> % OFF</p>  
+			</div>    
+			</div>  
+		<% }) %>
+
+    </main>
+
+
+
+
+
+    
+<!-- FOOTER -->
+<%- include('./partials/footer') %> 
+</body>
+</html>
