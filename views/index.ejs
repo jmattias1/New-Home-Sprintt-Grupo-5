@@ -13,7 +13,7 @@
             <a href="#"><img  class ="main__section__img" src="/img/<%= image %>" alt=""></a>
             <div class="main__section__texto">
             <h5><%= title %> </h5>
-            <p class="">$<%= price %> </p>
+            <p class="">$<%= toThousand(price) %> </p>
             <p class=""><%= discount %> % OFF</p>  
             </div>    
             </div>  
@@ -29,7 +29,7 @@
                 <a href="#"><img  class ="main__section__img" src="/img/<%= image %>" alt=""></a>
                 <div class="main__section__texto">
                 <h5><%= title %> </h5>
-                <p class="">$<%= price %> </p>
+                <p class="">$<%= toThousand(price) %> </p>
                 <p class=""><%= discount %> % OFF</p>  
                 </div>    
                 </div>  

@@ -5,33 +5,24 @@ const toThousand = n => n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 
 /*/falta codigo */
 controller = {
-    productDetail : (req,res) => {
-        return res.render('productDetail')   
-    },
-    productCart : (req,res) => {
+    cart : (req,res) => {
         return res.render('productCart',{
             title : 'Carrito'
         })   
     },
-    productAdd : (req,res) => {
+    update : (req,res) => {
         return res.render('productAdd',{
             title : 'Actualizar'
         })   
     },
-    productEdition: (req,res) => {
+    edit: (req,res) => {
         return res.render('productEdition',{
             title : 'Edición'
         })   
-    },
+    }, 
 
-
-
-    index : (req,res) =>{
-        return res.render('')
-    },
- 
     create : (req,res) => {
-        return res.render('')
+        return res.render('productCreateform')
     },
 
     store : (req,res) => {
@@ -43,7 +34,7 @@ controller = {
     },
 
     edit : (req,res) =>{
-        return res.render('/productEdition')
+        return res.render('edition')
     },
 
     update: (req,res) =>{
