@@ -8,7 +8,7 @@
     <main class="main">
         <% type.forEach(({id,title, image,discount,price}) => { %>
 			<div class="main__section__caja">
-			<a href="#"><img  class ="main__section__img" src="/img/<%= image %>" alt=""></a>
+			<a href="/products/detail/<%= id %> "><img  class ="main__section__img" src="/img/<%= image %>" alt=""></a>
 			<div class="main__section__texto">
 			<h5><%= title %> </h5>
 			<p class="">$<%= price %> </p>
