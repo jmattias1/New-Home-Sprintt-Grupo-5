@@ -5,7 +5,7 @@ const toThousand = n => n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 
 /*/falta codigo */
 controller = {
-    allproducts : (req, res) => {
+    all : (req, res) => {
         const products = JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'data', 'products.json')));
         let selectType = req.params.nombre;
         let type = products.filter(product => product.type === selectType);
