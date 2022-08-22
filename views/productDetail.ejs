@@ -11,7 +11,7 @@
                 <section class="producto">
                     <h2> <%= product.title %> </h2>
                     <div class="product_img">
-                        <img width="400" height="400" src="/img/tv1.jpg" alt="tv">
+                        <img width="400" height="400" src="/img/<%= product.image %> " alt="tv">
                     </div>
 
                     <article class="more_img_box">
@@ -26,7 +26,7 @@
                 </section>
 
                 <section class="price">
-                    <h2>$529.999</h2>
+                    <h2> $<%= toThousand(product.price) %></h2>
                     <p class="promos_bank">¡Nuestras promociones bancarias!</p>
                     <p class="promos">3 cuotas sin interes con los siguientes metodos de pago</p>
                     <div class="cards">
@@ -81,7 +81,7 @@
             <section class="description">   
                 <h4 class="tittle">Funciones especiales</h4>
                 <p class="product__description">Con su función Multi View conseguirás dividir la pantalla del smart en dos, para que puedas ver la TV y tu smartphone al mismo tiempo y en un solo lugar.</p>
-                <h4 class="tittle">Smart TV Samsung</h4>
+                <h4 class="tittle"><%= product.title %></h4>
                 <p class="product__description">El Smart TV Samsung QN85Q70AAGCZB posee un diseño delgado y asombroso, con una pantalla de 85 pulgadas y resolución 4K QLED, con la que tendrás imágenes claras y nítidas, para disfrutar de todo tu contenido favorito sin perderte ningún detalle. Además, podrás tener una experiencia gamer diferente y mejorada, ya que las pantallas de 21:9 y 32:9 te brindarán visibilidad adicional y, con FreeSync Premium Pro, disfrutarás tus partidas con más fluidez y enfoque.</p>
 
             </section>
@@ -89,26 +89,17 @@
             <section class="interesting_products">
                 <h3>Productos que te pueden llegar a interesar</h3>
                 <div class="containsproduct">
-                    <article>
-                        <img width="73" height="73" src="/img/aire.jpg" alt="aire acondicionado">
-                        <h4 class="interesting_products_border">Aire acondicionado LG</h4>
-                        <h4>$119.999</h4>
-                    </article>
-                    <article>
-                        <img width="73" height="73" src="/img/lavarropa.jpg" alt="Lavarropas">
-                        <h4 class="interesting_products_border">Lavarropas Longvie</h4>
-                        <h4>$99.999</h4>
-                    </article>
-                    <article>
-                        <img width="73" height="73" src="/img/heladera.jpg" alt="heladera">
-                        <h4 class="interesting_products_border">Heladera Samsung</h4>
-                        <h4>$159.999</h4>
-                    </article>
-                    <article>
-                        <img width="73" height="73" src="/img/tostadora.png" alt="tostadora">
-                        <h4 class="interesting_products_border">Tostadora Atma</h4>
-                        <h4>$14.999</h4>
-                    </article>
+
+                    <% loMejor.forEach(({id,title, image,discount,price}) => { %>
+                        <div class="main__section__caja">
+                        <a href="#"><img  class ="main__section__img" src="/img/<%= image %>" alt=""></a>
+                        <div class="main__section__texto">
+                        <h5><%= title %> </h5>
+                        <p class="">$<%= price %> </p>
+                        <p class=""><%= discount %> % OFF</p>  
+                        </div>    
+                        </div>  
+                          <% }) %>
                 </div>
 
             </section>

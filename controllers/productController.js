@@ -7,20 +7,23 @@ const toThousand = n => n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 controller = {
     allproducts : (req, res) => {
         const products = JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'data', 'products.json')));
-        let type = products.filter(product =>  product.type === "tv");
+        let type = products.filter(product => product.type === "tv");
         return res.render('allproducts', {
              title: 'Products',
              toThousand,
-             type             
+             type
     });
   },
     detail : (req,res) => {
         const products = JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'data', 'products.json')));
         const product = products.find(product => product.id === +req.params.id);
+        let loMejor = products.filter(product => product.section === "lo mejor" && product.discount <= 20 );
 
         return res.render('productDetail',{
             title : 'Detalle',
-            product
+            toThousand,
+            product,
+            loMejor
         })
     },
     productCart : (req,res) => {
@@ -51,14 +54,6 @@ controller = {
 
     store : (req,res) => {
         return res.redirect('')
-    },
-
-    detail : (req,res) => {
-        return res.render('productDetail')
-    },
-
-    edit : (req,res) =>{
-        return res.render('/productEdition')
     },
 
     update: (req,res) =>{
