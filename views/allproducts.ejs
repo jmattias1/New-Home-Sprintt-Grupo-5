@@ -7,18 +7,21 @@
     <%- include('./partials/header') %> 
 
     <main class="interesting_products">
+		<h3>Tus resultados sobre: </h3>
 		<div class="main_allProducts">
 		<div class="containsproduct">
-        <% type.forEach(({id,title, image,discount,price}) => { %>		
-			<article>
-			<a href="/products/detail/<%= id %> "><img  class ="main__section__img" src="/img/<%= image %>" alt=""></a>	
-			<h5 class="interesting_products_border"><%= title %> </h5>
-			<p class="">$<%= price %> </p>
-			<p class=""><%= discount %> % OFF</p>  
-			</article>			  
-		<% }) %>
-		</div>
-		</div>
+
+        	<% type.forEach(({id,title, image,discount,price}) => { %>		
+				<article>
+				<a href="/products/detail/<%= id %> "><img  class ="main__section__img" src="/img/<%= image %>" alt=""></a>	
+				<h5 class="interesting_products_border"><%= title %> </h5>
+				<p class="">$<%= price %> </p>
+				<p class=""><%= discount %> % OFF</p>  
+				</article>			  
+			<% }) %>
+			</div>
+			</div>
+		
     </main>
 
     

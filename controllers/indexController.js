@@ -7,6 +7,7 @@ module.exports = {
         const products = JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'data', 'products.json')));
         let loMejor = products.filter(product => product.section === "lo mejor" && product.discount <= 20 );
         let oferta = products.filter(product =>  product.section === "oferta" && product.discount > 20 );
+
         return res.render('index', {
              title: 'New Home',
              loMejor,
@@ -15,8 +16,16 @@ module.exports = {
     });
   },
   search : (req,res) => {
-    return res.render('result',{
-         
+
+    let {keywords} = req.query;
+    const products = JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'data', 'products.json')));
+
+    let result = products.filter(product => product.title.toLowerCase().includes(keywords.toLowerCase()));
+
+    return res.render('results', {
+        products: result ,
+        keywords : req.query.keywords,
+        toThousand
     })
-  }
+}
 };
