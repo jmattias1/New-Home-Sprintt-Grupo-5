@@ -88,20 +88,16 @@
 
             <section class="interesting_products">
                 <h3>Productos que te pueden llegar a interesar</h3>
-                <div class="containsproduct">
-
+                <div class="containsproduct">       
                     <% loMejor.forEach(({id,title, image,discount,price}) => { %>
-                        <div class="main__section__caja">
-                        <a href="#"><img  class ="main__section__img" src="/img/<%= image %>" alt=""></a>
-                        <div class="main__section__texto">
-                        <h5><%= title %> </h5>
+                    <article>
+                        <a href="/products/detail/<%= id %> "><img  class ="main__section__img" src="/img/<%= image %>" alt=""></a>                      
+                        <h5 class="interesting_products_border"><%= title %> </h5>
                         <p class="">$<%= price %> </p>
-                        <p class=""><%= discount %> % OFF</p>  
-                        </div>    
-                        </div>  
-                          <% }) %>
+                        <p class="color_verde"><%= discount %> % OFF</p>    
+                    </article>
+                          <% }) %>                   
                 </div>
-
             </section>
     </main>
     <nav class="main__nav">
