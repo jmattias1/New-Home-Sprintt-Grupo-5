@@ -42,10 +42,6 @@ main h2{
     border: 1px solid #474545;
 }
 
-.more_img_box{
-    display: none;
-}
-
 .price {
     width: 90%;
     padding-left: 15px;
@@ -120,10 +116,6 @@ main h2{
     padding: 3px;
 }
 
-.caracteristicas {
-    display: none;
-}
-
 .description {
     width: 90%;
     margin-left: 5%;
@@ -142,8 +134,6 @@ main h2{
     margin-bottom: 15px;
     font-size: 14px;
 }
-
-/* Productos interesantes */
 
 .interesting_products{
     width: 90%;
@@ -167,20 +157,12 @@ main h2{
     object-fit: contain;
 }
 
-.interesting_products h5{
+.interesting_products h4{
     padding: 5px;
-    text-align: inherit;
-    font-size: 16px;
-    font-weight: 100px;
 }
 
 .interesting_products_border{
     border-top: 1px solid #ebebeb;
-}
-
-.color_verde{
-    color: #39b54a;
-    font-size: 14px;
 }
 
 .send {
@@ -268,20 +250,13 @@ main h2{
 
 .containsproduct{
     display: flex;
-    /* justify-content: space-around; */
-    
+    justify-content: space-around;
     
 }
 
 .interesting_products article{
     width: 300px;
     
-    
-}
-
-.main_allProducts{
-    width: 90%;
-    height: 700px;
 }
 
 }
