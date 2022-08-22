@@ -7,10 +7,15 @@ const toThousand = n => n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 controller = {
     allproducts : (req, res) => {
         const products = JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'data', 'products.json')));
-        let type = products.filter(product => product.type === "tv");
+        let selectType = req.params.nombre;
+        let type = products.filter(product => product.type === selectType);
+        const product = products.find(product => product.id === +req.params.id);
         return res.render('allproducts', {
              title: 'Products',
              toThousand,
+             selectType,
+             products,
+             product,
              type
     });
   },
@@ -44,7 +49,7 @@ controller = {
 
 
 
-    index : (req,res) =>{
+/*     index : (req,res) =>{
         return res.render('')
     },
  
@@ -62,7 +67,7 @@ controller = {
 
     destroy : (req,res) => {
         return res.redirect('/')
-    }
+    } */
 }
 
 module.exports = controller;

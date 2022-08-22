@@ -9,7 +9,7 @@ router
      /*/con estos 3 nose q hacer si borralos o no */     
 
     .get('/productCart', productCart)
-    .get('/allproducts', allproducts)
+    .get('/allproducts/:nombre', allproducts)
     .get('/productAdd',productAdd)
     .get('/detail/:id',detail) 
 /*     .get('/', productController.index)
