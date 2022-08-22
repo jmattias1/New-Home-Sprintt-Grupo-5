@@ -2,7 +2,6 @@ const fs = require('fs');
 const path = require('path');
 const toThousand = n => n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 
-/*/falta codigo */
 controller = {
     all : (req, res) => {
         const products = JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'data', 'products.json')));
@@ -31,22 +30,20 @@ controller = {
         })
     },
     productCart : (req,res) => {
-
         return res.render('productCart',{
             title : 'Carrito'
         })   
     },
-    update : (req,res) => {
+    productAdd : (req,res) => {
         return res.render('productAdd',{
             title : 'Actualizar'
         })   
     },
-    edit: (req,res) => {
+    productEdition: (req,res) => {
         return res.render('productEdition',{
             title : 'Edición'
         })   
-    }, 
-
-};
+    },
+}
 
 module.exports = controller;
