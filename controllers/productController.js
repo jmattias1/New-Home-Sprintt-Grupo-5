@@ -29,16 +29,66 @@ controller = {
             loMejor
         })
     },
-    productCart : (req,res) => {
+    edit : (req,res) => {
+        const products = JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'data', 'products.json')));
+        const {id} = req.params;
+        let product = products.find(product => product.id === +id)
+
+        return res.render('edition',{
+            product
+        })
+    },
+    update : (req,res) => {
+
+        const products = JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'data', 'products.json')));
+
+        const {id} = req.params;
+        let {title, price,discount, description,section} = req.body;
+
+
+        const productModify = products.map(product => {
+            if(product.id === +id){
+                return {
+                    ...product,
+                    title : title.trim(),
+                    description : description.trim(),
+                    price : +price,
+                    discount : +discount,
+                    section
+                }
+            }else{
+                return product
+            }
+        })
+
+        fs.writeFileSync(path.join(__dirname, '..', 'data', 'products.json'),JSON.stringify(productModify,null,3),'utf-8');    
+        return res.redirect('/products/detail/' + id);
+
+    },
+    create: (req, res) => {
+		return res.render('productAdd')
+	},
+	store: (req, res) => {
+		const {price,section,discount,description,title} = req.body;
+		const newProduct = {
+			id : (products[products.length - 1].id + 1),
+			title : title.trim(),
+			description : description.trim(),
+			price : +price,
+			discount : +discount,
+			image : 'default-img.png',
+			section
+		}
+		let productModify = {...products, newProduct}
+		fs.writeFileSync(path.join(__dirname, '..', 'data', 'products.json'),JSON.stringify(productModify,null,3),'utf-8');    
+		return res.redirect('/products/detail/' + productModify.id);
+	}, 
+    cart : (req,res) => {
         return res.render('productCart',{
             title : 'Carrito'
         })   
     },
-    productAdd : (req,res) => {
-        return res.render('productAdd',{
-            title : 'Actualizar'
-        })   
-    },
+
     productEdition: (req,res) => {
         return res.render('productEdition',{
             title : 'Edición'

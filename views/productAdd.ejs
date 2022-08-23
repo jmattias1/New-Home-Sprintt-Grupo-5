@@ -1,61 +1,74 @@
 <!DOCTYPE html>
 <html lang="es">
 
-    <%- include('./partials/head') %> 
+    <%- include('./partials/head', {
+        title : 'Nuevo producto'
+    }) %> 
 
 
 <body class="result">
     <%- include('./partials/header') %> 
 
-    <main class="main">
-                <section class="main__section">   
-                    <!-- <h4>Nuevo producto</h4> -->
-                        <form action="" method="POST">
-                                <div class="form__box__barra">
-                                    <label for="title" class="titulo">Producto</label>
-                                    <input type="text" class="input" id="title" name="title">
+    <main class="container">
+        <div class="row mt-5">
+            <div class="col-12 col-md-8 col-lg-6 mx-auto">
+                <section class="card shadow">
+                    <div class="card-header">
+                        <h4>Nuevo producto</h4>
+                    </div>
+                    <div class="card-body">
+                        <form action="/products/store" method="POST">
+                            <div class="row">
+                                <div class="mb-3 col-12">
+                                    <label for="title" class="form-label">Producto</label>
+                                    <input type="text" class="form-control" id="title" name="title" >
+                                    
                                   </div>
-                                  <div class="form__box__barra">
-                                    <label for="price" class="titulo">Precio</label>
-                                    <input class="input" id="price" type="number" name="price">
+                                  <div class="mb-3 col-12 col-md-6">
+                                    <label for="price" class="form-label">Precio</label>
+                                    <input class="form-control" id="price" type="number" name="price" >
                                   </div>
-                                  <div class="form__box__barra">
-                                    <label for="discount" class="titulo">Descuento</label>
-                                    <input class="input" id="discount" type="number" name="discount">
+                                  <div class="mb-3 col-12 col-md-6">
+                                    <label for="discount" class="form-label">Descuento</label>
+                                    <input class="form-control" id="discount" type="number" name="discount">
                                   </div>
-                                  <div class="form__box__barra">
-                                    <label for="seccion" class="titulo">Sección</label>
+                                  <div class="mb-3 col-12 col-md-6">
+                                    <label for="seccion" class="form-label">Sección</label>
                                     <div class="form-check">
-                                        <input class="form-check-input" type="radio" value="descuento" name="section" id="section1">
+                                        <input class="form-check-input" type="radio" value="lo mejor" name="section" id="section1">
                                         <label class="form-check-label" for="section1">
-                                          Descuento
+                                          Stock
                                         </label>
                                       </div>
                                       <div class="form-check">
-                                        <input class="form-check-input" type="radio" value="hotSale" name="section" id="section2">
+                                        <input class="form-check-input" type="radio" value="oferta" name="section" id="section2">
                                         <label class="form-check-label" for="section2">
-                                          Hot Sale
+                                          Oferta
                                         </label>
                                       </div>
                                   </div>
-                                  <div class="form__box__barra">
-                                    <label for="brand" class="titulo">Marca</label>
-                                    <select name="brand" id="brand" class="input">
-                                        <option value="" hidden selected>Seleccionar marca</option>
-                                    </select>
+                                  <div class="mb-3 col-12 col-md-6">
+                                    <label for="description" class="form-label">Descripción</label>
+                                    <textarea class="form-control" name="description" id="description" cols="30" rows="5" style="resize: none;"></textarea>
                                   </div>
-                                  <div class="form__box__barra">
-                                    <label for="description" class="titulo">Descripción</label>
-                                    <textarea class="input" name="description"></textarea>
+
+                                  <div class="mb-3 col-12 col-md-6">
+                                    <label class="btn btn-secondary" for="image">Agregar imagen</label>
+                                    <input hidden type="file" accept="image/*" name="image" id="image" multiple>
                                   </div>
-                                  <div class="form__box__barra">
-                                    <button type="submit">Enviar</button>
+                                  <div class="text-end">
+                                    <button type="submit" class="btn btn-primary">Enviar</button>
                                   </div>
                             </div>
-                        </form> 
+                          
+                        </form>
+                        
                     </div>
-                </section> 
+                </section>
+            </div>
+        </div>
+      
     </main>
-    <%- include('./partials/footer') %> 
 </body>
+
 </html>
