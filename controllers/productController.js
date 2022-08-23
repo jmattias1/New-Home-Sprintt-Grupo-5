@@ -70,10 +70,11 @@ controller = {
 	},
 	store: (req, res) => {
 		const {price,section,discount,description,title} = req.body;
+        const products = JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'data', 'products.json')));
 		const newProduct = {
 			id : (products[products.length - 1].id + 1),
-			title : title.trim(),
-			description : description.trim(),
+			title : title?.trim(),
+			description : description?.trim(),
 			price : +price,
 			discount : +discount,
 			image : 'default-img.png',
@@ -86,12 +87,6 @@ controller = {
     cart : (req,res) => {
         return res.render('productCart',{
             title : 'Carrito'
-        })   
-    },
-
-    productEdition: (req,res) => {
-        return res.render('productEdition',{
-            title : 'Edición'
         })   
     },
 }

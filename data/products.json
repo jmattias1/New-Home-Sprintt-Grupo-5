@@ -1,5 +1,5 @@
-{
-   "0": {
+[
+   {
       "id": 1,
       "title": "Secarropas centrífugo Koh-i-noor 2022",
       "price": 44999,
@@ -9,7 +9,7 @@
       "section": "lo mejor",
       "type": "lavado"
    },
-   "1": {
+   {
       "id": 2,
       "title": "Heladera inverter no frost Samsung",
       "price": 158190,
@@ -19,7 +19,7 @@
       "section": "lo mejor",
       "type": "cocina"
    },
-   "2": {
+   {
       "id": 3,
       "title": "Lavarropas automático Whirlpool",
       "price": 100499,
@@ -29,7 +29,7 @@
       "section": "lo mejor",
       "type": "lavado"
    },
-   "3": {
+   {
       "id": 4,
       "title": "Ropero de madera",
       "price": 45065,
@@ -39,7 +39,7 @@
       "section": "lo mejor",
       "type": "muebles"
    },
-   "4": {
+   {
       "id": 5,
       "title": "Ventilador de techo Liliana",
       "price": 44899,
@@ -49,7 +49,7 @@
       "section": "lo mejor",
       "type": "climatizacion"
    },
-   "5": {
+   {
       "id": 6,
       "title": "Colchón 1 plaza de espuma",
       "price": 47599,
@@ -59,7 +59,7 @@
       "section": "lo mejor",
       "type": "hogar"
    },
-   "6": {
+   {
       "id": 7,
       "title": "Cocina Electrolux",
       "price": 189799,
@@ -69,7 +69,7 @@
       "section": "oferta",
       "type": "cocina"
    },
-   "7": {
+   {
       "id": 8,
       "title": "Tostadora Moulinex Vita",
       "price": 7590,
@@ -79,7 +79,7 @@
       "section": "oferta",
       "type": "cocina"
    },
-   "8": {
+   {
       "id": 9,
       "title": "Inodoro Prunus One Piece",
       "price": 37012,
@@ -89,7 +89,7 @@
       "section": "oferta",
       "type": "hogar"
    },
-   "9": {
+   {
       "id": 10,
       "title": "Cesto Tacho Basura Acero Inoxidable Pedal",
       "price": 4990,
@@ -99,7 +99,7 @@
       "section": "oferta",
       "type": "hogar"
    },
-   "10": {
+   {
       "id": 11,
       "title": "Sillon Capitone Premium",
       "price": 19999,
@@ -109,23 +109,14 @@
       "section": "oferta",
       "type": "hogar"
    },
-   "11": {
+   {
       "id": 12,
       "title": "Smart TV Samsung",
-      "price": 112999,
+      "price": 240000,
       "discount": 40,
       "image": "tv1.jpg",
       "description": "lorem ipsum dolor amet sit.",
       "section": "oferta",
       "type": "tv"
-   },
-   "newProduct": {
-      "id": 13,
-      "title": "Play Station 5",
-      "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
-      "price": 210000,
-      "discount": 30,
-      "image": "default-img.png",
-      "section": "lo mejor"
    }
-}
+]
