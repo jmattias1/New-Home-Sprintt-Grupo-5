@@ -94,7 +94,7 @@ controller = {
         const products = JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'data', 'products.json')));
         const productModify = products.filter(product => product.id !== +id) ;
         fs.writeFileSync(path.join(__dirname, '..', 'data', 'products.json'),JSON.stringify(productModify,null,3),'utf-8');    
-        return res.redirect('/allproducts');
+        return res.redirect('/products/delete');
     }
 }
 
