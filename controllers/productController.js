@@ -70,10 +70,11 @@ controller = {
 	},
 	store: (req, res) => {
 		const {price,section,discount,description,title} = req.body;
+        const products = JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'data', 'products.json')));
 		const newProduct = {
 			id : (products[products.length - 1].id + 1),
-			title : title.trim(),
-			description : description.trim(),
+			title : title?.trim(),
+			description : description?.trim(),
 			price : +price,
 			discount : +discount,
 			image : 'default-img.png',
@@ -88,13 +89,13 @@ controller = {
             title : 'Carrito'
         })   
     },
-
-    productEdition: (req,res) => {
-        return res.render('productEdition',{
-            title : 'Edición'
-        })   
-    },
+    destroy : (req,res) => {
+        const {id} = req.params;
+        const products = JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'data', 'products.json')));
+        const productModify = products.filter(product => product.id !== +id) ;
+        fs.writeFileSync(path.join(__dirname, '..', 'data', 'products.json'),JSON.stringify(productModify,null,3),'utf-8');    
+        return res.redirect('/products/delete');
+    }
 }
 
 module.exports = controller;
-.............
