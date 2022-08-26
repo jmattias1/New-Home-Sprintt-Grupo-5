@@ -60,29 +60,28 @@ controller = {
                 return product
             }
         })
-
         fs.writeFileSync(path.join(__dirname, '..', 'data', 'products.json'),JSON.stringify(productModify,null,3),'utf-8');    
         return res.redirect('/products/detail/' + id);
-
     },
     create: (req, res) => {
 		return res.render('productAdd')
 	},
 	store: (req, res) => {
-		const {price,section,discount,description,title} = req.body;
+		const {price,section,discount,description,title,type} = req.body;
         const products = JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'data', 'products.json')));
 		const newProduct = {
-			id : (products[products.length - 1].id + 1),
+            id : products[products.length - 1].id + 1,
 			title : title?.trim(),
 			description : description?.trim(),
 			price : +price,
 			discount : +discount,
 			image : 'default-img.png',
-			section
+			section,
+            type
 		}
-		let productModify = {...products, newProduct}
+		let productModify = [...products, newProduct]
 		fs.writeFileSync(path.join(__dirname, '..', 'data', 'products.json'),JSON.stringify(productModify,null,3),'utf-8');    
-		return res.redirect('/products/detail/' + productModify.id);
+		return res.redirect('/');
 	}, 
     cart : (req,res) => {
         return res.render('productCart',{
@@ -94,7 +93,7 @@ controller = {
         const products = JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'data', 'products.json')));
         const productModify = products.filter(product => product.id !== +id) ;
         fs.writeFileSync(path.join(__dirname, '..', 'data', 'products.json'),JSON.stringify(productModify,null,3),'utf-8');    
-        return res.redirect('/products/delete');
+        return res.redirect('/');
     }
 }
 
