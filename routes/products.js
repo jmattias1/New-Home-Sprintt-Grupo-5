@@ -1,7 +1,7 @@
 var express = require('express');
 /* const productController = require('../controllers/productController'); */
 var router = express.Router();
-const {detail,all,edit,update,cart,store,create,destroy} = require('../controllers/productController')
+const {detail,all,edit,update,cart,store,create,destroy,remove} = require('../controllers/productController')
 
 /*/products */
 router    
@@ -12,7 +12,8 @@ router
     .put('/update/:id',update)
     .post('/store',store)
     .get('/create',create) 
-    .get('/cart',cart)     
-    .delete('/delete/:id',destroy)
+    .get('/cart',cart)  
+    .get('/delete/:id', remove)   
+    .delete('/destroy/:id',destroy)
 
 module.exports = router;
