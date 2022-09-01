@@ -4,13 +4,15 @@ var router = express.Router();
 /* Controller */
 const { register, processRegister, login, loginProcess , profile} = require('../controllers/usersController')
 
-/*/users */
+/* Middlewares */
+const uploadFile = require ('../middlewares/multerMiddleware')
 
+/*/users */
 /* /register*/
 
 router
     .get('/register', register)
-    .post ('/register', processRegister)
+    .post ('/register', uploadFile.single('avatar'), processRegister)
 
 /* /login */
 

@@ -16,7 +16,7 @@ module.exports = {
         const resultValidation = validationResult(req);
         
         if (resultValidation.errors.length > 0) {
-            return res.render('userRegisterForm', {
+            return res.render('register', {
                 title: 'Register',
                 errors: resultValidation.mapped(),
                 oldData: req.body,
@@ -26,7 +26,7 @@ module.exports = {
         let userInDB = User.findByTag('email', req.body.email);
 
         if (userInDB) {
-            return res.render('userRegisterForm', {
+            return res.render('register', {
                 title: 'Register',
                 errors : {
                     email : {
@@ -41,6 +41,7 @@ module.exports = {
             ...req.body,
             password: bcryptjs.hashSync (req.body.password, 10),
             avatar : req.file.filename
+            
         }
 
         User.create (userToCreate);
@@ -55,12 +56,13 @@ module.exports = {
     },
 
     loginProcess: (req,res) => {
-        let userToLogin = User.findByTag('email', req.body.email)
+        let userToLogin = User.findByTag('email', req.body.email);
+
         if (userToLogin) {
             let isCorrectPassword = bcryptjs.compareSync (req.body.password , userToLogin.password);
             if (isCorrectPassword){
                 delete userToLogin.password;
-                req.session.userToLogin = userToLogin;
+                req.session.userLogged = userToLogin;
                 return res.redirect ('/users/profile')
             }
             return res.render ('login', {
@@ -89,8 +91,4 @@ module.exports = {
             user: req.session.userLogged
         })
     }
-
-            
-
-
 }
