@@ -69,14 +69,15 @@ controller = {
 	store: (req, res) => {
 		const {price,section,discount,description,title} = req.body;
         const products = JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'data', 'products.json')));
+        image = req.file.filename;
         const newProduct = {
             id : products[products.length - 1].id + 1,
 			title : title.trim(),
 			description : description.trim(),
 			price : +price,
 			discount : +discount,
-			image : 'default-img.png',
-			section
+			section,
+            image 
 		}
 		let productModify = [...products, newProduct]
 		fs.writeFileSync(path.join(__dirname, '..', 'data', 'products.json'),JSON.stringify(productModify,null,3),'utf-8');    
