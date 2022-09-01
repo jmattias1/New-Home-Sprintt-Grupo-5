@@ -28,7 +28,7 @@ const User = {
     },
 
     findByTag: function (tag, text) {
-        let allUsers = this.findAll;
+        let allUsers = this.findAll();
         let userFound = allUsers.find (oneUser => oneUser[tag] === text);
         return userFound;
     },
@@ -53,5 +53,7 @@ const User = {
     }
 
 }
+
+
 
 module.exports = User;
