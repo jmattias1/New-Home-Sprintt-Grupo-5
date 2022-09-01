@@ -3,7 +3,6 @@ var express = require('express');
 var router = express.Router();
 const {detail,all,edit,update,cart,store,create,destroy,remove} = require('../controllers/productController')
 
-const {uploadImageProduct} = require('../middlewares/uploadImg')
 /*/products */
 router    
 
@@ -11,7 +10,7 @@ router
     .get('/detail/:id',detail) 
     .get('/edit/:id',edit)
     .put('/update/:id',update)
-    .post('/store',uploadImageProduct.single('image'),store)
+    .post('/store',store)
     .get('/create',create) 
     .get('/cart',cart)  
     .get('/delete/:id', remove)   
