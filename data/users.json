@@ -79,11 +79,11 @@
  },
  {
   "id": 12,
-  "name": "roman riquelme",
-  "password": "$2a$10$RJ4Kd3WYITM4Am9ct/58k.HiQk1sQB0QIK61cKt5cLRrXkGTOoqJa",
+  "name": "Roman Riquelme",
+  "password": "$2a$10$iRE5bBRyPZNREwCVwMLfHOhnFb3v2Js7KDes4j8q1zXv78jfYpqQu",
   "email": "hola@gmail.com",
-  "country": "1",
+  "country": "Uruguay",
   "telefono": "1123906548",
-  "avatar": "1662071989899_img.jpg"
+  "avatar": "1662079974191_img.jpg"
  }
 ]

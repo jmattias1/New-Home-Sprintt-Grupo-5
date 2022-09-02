@@ -127,5 +127,15 @@
       "discount": 20,
       "section": "lo mejor",
       "image": "product-1662002525488.jpg"
+   },
+   {
+      "id": 14,
+      "title": "Sega genesis",
+      "description": "Sega Mega Drive o Sega Genesis es una videoconsola de sobremesa producida por SEGA, lanzada al mercado en 1988. Esta videoconsola es la sucesora directa de la Sega Master System y compitió contra la SNES de Nintendo, como parte de las videoconsolas de cuarta generación.",
+      "price": 5000,
+      "discount": 0,
+      "section": "",
+      "type": "consolas",
+      "image": "product-1662078677579.jpg"
    }
 ]
