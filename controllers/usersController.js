@@ -90,5 +90,10 @@ module.exports = {
             title: 'Perfil',
             user: req.session.userLogged
         })
+    },
+    logout : (req,res) => {
+        req.session.destroy()
+        res.cookie('',null,{maxAge: -1});
+        return res.redirect('/')
     }
 }
