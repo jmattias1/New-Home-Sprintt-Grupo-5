@@ -137,5 +137,15 @@
       "section": "",
       "type": "consolas",
       "image": "product-1662078677579.jpg"
+   },
+   {
+      "id": 15,
+      "title": "Iphone 12",
+      "description": "Esta re bueno",
+      "price": 250000,
+      "discount": 5,
+      "section": "lo mejor",
+      "type": "celulares",
+      "image": "product-1662143951330.jpg"
    }
 ]
