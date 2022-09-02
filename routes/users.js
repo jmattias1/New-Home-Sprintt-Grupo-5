@@ -7,6 +7,8 @@ const { register, processRegister, login, loginProcess , profile, logout} = requ
 /* Middlewares */
 const uploadFile = require ('../middlewares/multerMiddleware')
 
+const userSessionCheck = require('../middlewares/userSessionCheck')
+
 /*/users */
 /* /register*/
 
@@ -23,8 +25,8 @@ router
 /* Profile */
 
 router
-    .get ('/profile', profile);
-    .get ('/logout', logout)
+    .get ('/profile',userSessionCheck, profile)
+    .get ('/logout', logout);
 
 
     

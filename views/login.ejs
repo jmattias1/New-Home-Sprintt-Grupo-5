@@ -2,7 +2,7 @@
 <html lang="en">
 
     <%- include('./partials/head') %> 
-<body>
+<body class="login">
     <!-- HEADER -->
     <%- include('./partials/header') %> 
 
@@ -13,8 +13,10 @@
         <form class=" w-40 d-flex  flex-column " action="" method="POST">
             <label for="email"></label>
             <input class="m-top25 radio p-left" placeholder="Ingresa tu email" type="email" name="email" id="email">
+            <p class="form__error__msg"><%= locals.errors && errors.email ? errors.email.msg : null %></p>
             <label for="password"></label>
             <input class="m-top50 radio p-left" placeholder="Elegi tu contraseña" type="password" name="password" id="password">
+            <p class="form__error__msg"><%= locals.errors && errors.password ? errors.password.msg : null %></p>
             <button class="enviar m-top50 m-botton25" type="submit">Enviar</button>
         </form>
         <button class="radio bc-white">Olvidaste tu contraseña?</button>
