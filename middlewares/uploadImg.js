@@ -14,6 +14,8 @@ const uploadImageProduct = multer({
     storage : storageImageProduct
 });
 
+
+
 module.exports = {
     uploadImageProduct
 }
