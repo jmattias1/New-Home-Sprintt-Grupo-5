@@ -2,6 +2,9 @@ const fs = require('fs');
 const path = require('path');
 const toThousand = n => n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 
+const {validationResult} = require('express-validator');
+
+
 controller = {
     all : (req, res) => {
         const products = JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'data', 'products.json')));
@@ -39,13 +42,11 @@ controller = {
         })
     },
     update : (req,res) => {
-
         const products = JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'data', 'products.json')));
-
+        const errors = validationResult(req);
+        if(errors.isEmpty()){
         const {id} = req.params;
         let {title, price,discount, description,section} = req.body;
-
-
         const productModify = products.map(product => {
             if(product.id === +id){
                 return {
@@ -61,14 +62,25 @@ controller = {
             }
         })
         fs.writeFileSync(path.join(__dirname, '..', 'data', 'products.json'),JSON.stringify(productModify,null,3),'utf-8');    
-        return res.redirect('/products/detail/' + id);
+        return res.redirect('/products/detail/' + id);    
+        }else{
+            return res.render('edition', {
+                product : req.body,
+                id : req.params.id,
+                errors : errors.mapped()
+
+            })
+        }
+        
     },
     create: (req, res) => {
 		return res.render('productAdd')
 	},
 	store: (req, res) => {
-		const {price,section,discount,description,title} = req.body;
-        const products = JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'data', 'products.json')));
+        const errors = validationResult(req);
+        if(errors.isEmpty()){
+        const {price,section,discount,description,title} = req.body;
+        const products = JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'data', 'products.json'))); 
         image = req.file.filename;
         const newProduct = {
             id : products[products.length - 1].id + 1,
@@ -77,11 +89,17 @@ controller = {
 			price : +price,
 			discount : +discount,
 			section,
-            image 
+            image  
 		}
 		let productModify = [...products, newProduct]
 		fs.writeFileSync(path.join(__dirname, '..', 'data', 'products.json'),JSON.stringify(productModify,null,3),'utf-8');    
-		return res.redirect('/');
+		return res.redirect('/');    
+        }else{
+        return res.render('productAdd',{
+            errors : errors.mapped(),
+            old : req.body
+        })
+        }
 	}, 
     cart : (req,res) => {
         return res.render('productCart',{
