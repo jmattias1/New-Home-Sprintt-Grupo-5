@@ -79,7 +79,7 @@ controller = {
 	store: (req, res) => {
         const errors = validationResult(req);
         if(errors.isEmpty()){
-        const {price,section,discount,description,title} = req.body;
+        const {price,section,discount,description,title,type} = req.body;
         const products = JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'data', 'products.json'))); 
         image = req.file.filename;
         const newProduct = {
