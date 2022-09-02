@@ -36,16 +36,15 @@ controller = {
         const products = JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'data', 'products.json')));
         const {id} = req.params;
         let product = products.find(product => product.id === +id)
-
         return res.render('edition',{
             product
         })
     },
     update : (req,res) => {
-        const products = JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'data', 'products.json')));
         const errors = validationResult(req);
         if(errors.isEmpty()){
-        const {id} = req.params;
+        const {id} = req.params; 
+        const products = JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'data', 'products.json')));
         let {title, price,discount, description,section} = req.body;
         const productModify = products.map(product => {
             if(product.id === +id){

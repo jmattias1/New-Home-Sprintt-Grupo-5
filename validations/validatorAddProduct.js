@@ -5,9 +5,9 @@ module.exports = [
         .notEmpty()
         .withMessage('Nombre de producto requerido').bail()
         .isLength({
-            min : 10,
-            max : 40
-        }).withMessage('el producto debe contener entre 10 y 40 caracteres'),
+            min : 30,
+            max : 100
+        }).withMessage('el producto debe contener entre 30 y 100 caracteres'),
     check('price')
         .notEmpty()
         .withMessage('Precio de producto requerido').bail()
