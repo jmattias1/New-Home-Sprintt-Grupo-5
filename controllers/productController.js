@@ -77,15 +77,10 @@ controller = {
 		return res.render('productAdd')
 	},
 	store: (req, res) => {
-<<<<<<< HEAD
         const errors = validationResult(req);
         if(errors.isEmpty()){
         const {price,section,discount,description,title} = req.body;
         const products = JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'data', 'products.json'))); 
-=======
-		const {price,section,discount,description,title, type} = req.body;
-        const products = JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'data', 'products.json')));
->>>>>>> a5a42d084548a94c295afe80ebedcb32e56e53ab
         image = req.file.filename;
         const newProduct = {
             id : products[products.length - 1].id + 1,
@@ -94,12 +89,8 @@ controller = {
 			price : +price,
 			discount : +discount,
 			section,
-<<<<<<< HEAD
-            image  
-=======
             type,
             image 
->>>>>>> a5a42d084548a94c295afe80ebedcb32e56e53ab
 		}
 		let productModify = [...products, newProduct]
 		fs.writeFileSync(path.join(__dirname, '..', 'data', 'products.json'),JSON.stringify(productModify,null,3),'utf-8');    
