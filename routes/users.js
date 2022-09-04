@@ -6,19 +6,20 @@ const { register, processRegister, login, loginProcess , profile} = require('../
 
 /* Middlewares */
 const uploadFile = require ('../middlewares/multerMiddleware')
+const {validatorRegister, validatorLogin} = require('../validations');
 
 /*/users */
 /* /register*/
 
 router
     .get('/register', register)
-    .post ('/register', uploadFile.single('avatar'), processRegister)
+    .post ('/register', uploadFile.single('avatar'), validatorRegister, processRegister)
 
 /* /login */
 
 router
     .get ('/login', login)
-    .post ('/login', loginProcess);
+    .post ('/login', validatorLogin, loginProcess);
 
 /* Profile */
 
