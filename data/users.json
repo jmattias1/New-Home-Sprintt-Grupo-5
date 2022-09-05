@@ -81,11 +81,10 @@
  {
   "id": 13,
   "name": "Matias Ezequiel Risso",
-  "password": "$2a$10$j1356q8aPVG0SJ8OGLLv8e8IM/D7/xOynVaMVpifc3Ufj6EJJPCKa",
+  "password": "$2a$10$v7VekoC9PRfUQzB.U/YnLOYJJJeMLc2AolhSVAmpY3nym46WXuahi",
   "email": "ezequielrisso1@hotmail.com",
   "country": "Argentina",
   "telefono": "66889900",
-  "rol": "admin",
-  "avatar": "1662394316705_img.png"
+  "avatar": "1662402708803_img.jpg"
  }
 ]
