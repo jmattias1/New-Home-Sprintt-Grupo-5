@@ -6,6 +6,9 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const methodOverride = require('method-override');
 
+const localsUserCheck = require('./middlewares/localsUserCheck');
+const cookieCheck = require('./middlewares/cookieCheck')
+
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var productsRouter = require('./routes/products');
@@ -28,6 +31,9 @@ app.use(session({
   resave: false,
   saveUninitialized: false,
 }));
+
+app.use(cookieCheck);
+app.use(localsUserCheck);
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);

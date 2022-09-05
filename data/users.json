@@ -85,5 +85,14 @@
   "country": "Uruguay",
   "telefono": "1123906548",
   "avatar": "1662079974191_img.jpg"
+ },
+ {
+  "id": 13,
+  "name": "Matias Ezequiel Risso",
+  "password": "$2a$10$j1356q8aPVG0SJ8OGLLv8e8IM/D7/xOynVaMVpifc3Ufj6EJJPCKa",
+  "email": "ezequielrisso1@hotmail.com",
+  "country": "Argentina",
+  "telefono": "66889900",
+  "avatar": "1662394316705_img.png"
  }
 ]

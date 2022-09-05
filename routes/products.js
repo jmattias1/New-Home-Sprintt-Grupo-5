@@ -14,7 +14,7 @@ router
     .get('/detail/:id',detail) 
     .get('/edit/:id',adminUserCheck,edit)
     .put('/update/:id',validatorEditProduct,update)
-    .post('/store',adminUserCheck ,uploadImageProduct.single('image'),validatorAddProduct,store)
+    .post('/store',uploadImageProduct.single('image'),validatorAddProduct,store)
     .get('/create',create) 
     .get('/cart',cart)  
     .get('/delete/:id',adminUserCheck, remove)   
