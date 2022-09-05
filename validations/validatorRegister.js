@@ -28,6 +28,11 @@ module.exports = [
          .notEmpty().withMessage('Ingrese su número de teléfono').bail()
          .isNumeric().withMessage('Este campo debe contener sólo números'),
      check('avatar')
-          .notEmpty().withMessage('Elija una foto de perfil')    
-    
+          .custom((value,{req}) => {
+                 let file = req.file;
+                if(!file){
+                throw new Error('Seleccione foto de perfil');
+          }
+          return true;
+      })
 ]

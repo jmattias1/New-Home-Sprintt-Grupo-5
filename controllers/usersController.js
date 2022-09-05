@@ -15,38 +15,46 @@ module.exports = {
     processRegister: (req,res) => {
         const resultValidation = validationResult(req);
         
-        if (resultValidation.errors.length > 0) {
-            return res.render('register', {
-                title: 'Register',
-                errors: resultValidation.mapped(),
-                oldData: req.body,
-            });
-        }
+        if(resultValidation.isEmpty()){
+           /* if (resultValidation.errors.length > 0) {
+                return res.render('register', {
+                    title: 'Register',
+                    errors: resultValidation.mapped(),
+                    oldData: req.body,
+                });
+            }*/
+    
+            let userInDB = User.findByTag('email', req.body.email);
+    
+            if (userInDB) {
+                return res.render('register', {
+                    title: 'Register',
+                    errors : {
+                        email : {
+                            msg: 'Este email ya esta registrado'
+                        }
+                    },
+                    oldData: req.body
+                });
+            }
+    
+            let userToCreate = {
+                ...req.body,
+                password: bcryptjs.hashSync (req.body.password, 10),
+                avatar : req.file.filename
+                
+            }
+    
+            User.create (userToCreate);
+    
+            return res.redirect ('/users/login');
 
-        let userInDB = User.findByTag('email', req.body.email);
-
-        if (userInDB) {
-            return res.render('register', {
-                title: 'Register',
-                errors : {
-                    email : {
-                        msg: 'Este email ya esta registrado'
-                    }
-                },
-                oldData: req.body
-            });
-        }
-
-        let userToCreate = {
-            ...req.body,
-            password: bcryptjs.hashSync (req.body.password, 10),
-            avatar : req.file.filename
-            
-        }
-
-        User.create (userToCreate);
-
-        return res.redirect ('/users/login');
+        }else {return res.render('register', {
+            title: 'Register',
+            errors: resultValidation.mapped(),
+            oldData: req.body,
+        })}
+        
     },
 
     login : (req,res) => {
