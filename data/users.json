@@ -70,14 +70,6 @@
   "avatar": "http://dummyimage.com/243x124.png/ff4444/ffffff"
  },
  {
-  "id": 11,
-  "name": "Sergio Denis",
-  "password": "$2a$10$OmjO4jlRHDjkSAIfLRhvFOQEOl41v3EnUNICTJ1i2tu0B77jHw91O",
-  "email": "sergiodenis@gmail.com",
-  "country": "3",
-  "telefono": "1123906548"
- },
- {
   "id": 12,
   "name": "Roman Riquelme",
   "password": "$2a$10$iRE5bBRyPZNREwCVwMLfHOhnFb3v2Js7KDes4j8q1zXv78jfYpqQu",
@@ -93,6 +85,7 @@
   "email": "ezequielrisso1@hotmail.com",
   "country": "Argentina",
   "telefono": "66889900",
+  "rol": "admin",
   "avatar": "1662394316705_img.png"
  }
 ]
