@@ -22,6 +22,10 @@
                                             <div class="form-group">
                                                 <label for="name">Nombre completo</label>
                                                 <input class="form-control" type="text" name="name" id="name">
+                                                <p class="form__error__msg">
+                                                    <%= locals.errors && errors.name ? errors.name.msg : null %>
+                                                </p>
+                                                  
                                             </div>
                                         </div>
 
@@ -30,6 +34,9 @@
                                                 <label for="password">Contraseña</label>
                                                 <input class="form-control" type="password" name="password"
                                                     id="password">
+                                                    <p class="form__error__msg">
+                                                        <%= locals.errors && errors.password ? errors.password.msg : null %>
+                                                    </p>
                                             </div>
                                         </div>
 
@@ -37,6 +44,9 @@
                                             <div class="form-group">
                                                 <label for="email">E-mail</label>
                                                 <input class="form-control" type="email" name="email" id="email">
+                                                <p class="form__error__msg">
+                                                    <%= locals.errors && errors.email ? errors.email.msg : null %>
+                                                </p>
                                             </div>
                                         </div>
 
