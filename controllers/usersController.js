@@ -64,7 +64,9 @@ module.exports = {
     },
 
     loginProcess: (req,res) => {
-        let userToLogin = User.findByTag('email', req.body.email);
+        let errors = validationResult(req);
+        if(errors.isEmpty()){
+            let userToLogin = User.findByTag('email', req.body.email);
 
         if (userToLogin) {
             let isCorrectPassword = bcryptjs.compareSync (req.body.password , userToLogin.password);
@@ -72,31 +74,37 @@ module.exports = {
                 delete userToLogin.password;
                 req.session.userLogged = userToLogin;
                 return res.redirect ('/users/profile')
-            }
-            return res.render ('login', {
+            }} else {
+                return res.render ('login', {
+                    title: 'Login',
+                    errors: errors.mapped()
+            })
+        
+            /*return res.render ('login', {
                 title: 'Login',
                 errors: {
                     email: {
                         msg : 'las creedenciales son invalidas'
                     }
+
                 }
             });
-        }
-
-        return res.render ('login', {
+        /*} return res.render ('login', {
             title: 'Login',
             errors: {
                 email: {
                     msg : 'Este email no se encuentra en nuestra base de datos'
                 }
-            }
-        });
-    },
+
+            }}  */    
+        
+    }
+}},
 
     profile: (req,res) => {
         return res.render ('userProfile', {
             title: 'Perfil',
             user: req.session.userLogged
         })
-    }
-}
+    
+    }}
