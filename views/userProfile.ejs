@@ -15,7 +15,7 @@
             <h1>UserProfile</h1>
 
             <div class="profile-image text-center mt-4">
-            <img class="img-fluid img-thumbnail" width="300" src="/img/avatars/<%= user.avatar %> ">
+            <img class="img-fluid img-thumbnail" width="300" src="/img/avatars/<%= user.avatar ? user.avatar : 'default.png' %> ">
           </div>
 
           <div class="profile text-center mt-2">

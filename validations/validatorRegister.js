@@ -24,9 +24,6 @@ module.exports = [
          }).withMessage('La contraseña debe contener entre 4 y 8 caracteres'),
     check('country')
          .notEmpty().withMessage('Debe seleccionar un pais'),
-    check('telefono')
-         .notEmpty().withMessage('Ingrese su número de teléfono').bail()
-         .isNumeric().withMessage('Este campo debe contener sólo números'),
      check('avatar')
           .custom((value,{req}) => {
                  let file = req.file;

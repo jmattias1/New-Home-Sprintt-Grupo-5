@@ -21,26 +21,49 @@
                                         <div class="col-md-6 my-1">
                                             <div class="form-group">
                                                 <label for="name">Nombre completo</label>
+<<<<<<< HEAD
                                                 <input class="form-control" type="text" name="name" id="name" value="<%= locals.old && old.name ? old.name : null %>">
                                                 <p class="form__error__msg"><%= locals.errors && errors.name ? errors.name.msg : null%> </p>
+=======
+                                                <input class="form-control" type="text" name="name" id="name">
+                                                <p class="form__error__msg">
+                                                    <%= locals.errors && errors.name ? errors.name.msg : null %>
+                                                </p>
+                                                  
+>>>>>>> develop
                                             </div>
                                         </div>
 
                                         <div class="col-md-6 my-1">
                                             <div class="form-group">
                                                 <label for="password">Contraseña</label>
+<<<<<<< HEAD
                                                 <input class="form-control" type="password" name="password" id="password" autocomplete="off">
                                                 <p class="form__error__msg"><%= locals.errors && errors.password ? errors.password.msg : null%> </p>
 
+=======
+                                                <input class="form-control" type="password" name="password"
+                                                    id="password">
+                                                    <p class="form__error__msg">
+                                                        <%= locals.errors && errors.password ? errors.password.msg : null %>
+                                                    </p>
+>>>>>>> develop
                                             </div>
                                         </div>
 
                                         <div class="col-md-6 my-1">
                                             <div class="form-group">
                                                 <label for="email">E-mail</label>
+<<<<<<< HEAD
                                                 <input class="form-control" type="email" name="email" id="email" autocomplete="off" value="<%= locals.old && old.email ? old.email : null %>">
                                                 <p class="form__error__msg"><%= locals.errors && errors.email ? errors.email.msg : null%> </p>
 
+=======
+                                                <input class="form-control" type="email" name="email" id="email">
+                                                <p class="form__error__msg">
+                                                    <%= locals.errors && errors.email ? errors.email.msg : null %>
+                                                </p>
+>>>>>>> develop
                                             </div>
                                         </div>
 
@@ -61,10 +84,19 @@
 
                                         <div class="col-md-6 my-1">
                                             <div class="form-group">
+<<<<<<< HEAD
                                                 <label for="telefono">Telefono</label>
                                                 <input class="form-control" type="tel" name="telefono" id="telefono" autocomplete="off">
                                                 <p class="form__error__msg"><%= locals.errors && errors.telefono ? errors.telefono.msg : null%> </p>
 
+=======
+
+                                                <label for="rol">Rol</label>
+                                                <select class="form-control" name="rol" id="rol">
+                                                    <option value="admin">Admin</option>
+                                                    <option value="usuario">Usuario</option>
+                                                </select>
+>>>>>>> develop
                                             </div>
                                         </div>
 

@@ -2,11 +2,13 @@ var express = require('express');
 var router = express.Router();
 
 /* Controller */
-const { register, processRegister, login, loginProcess , profile} = require('../controllers/usersController')
+const { register, processRegister, login, loginProcess , profile, logout} = require('../controllers/usersController')
 
 /* Middlewares */
 const uploadFile = require ('../middlewares/multerMiddleware')
 const {validatorRegister, validatorLogin} = require('../validations');
+
+const userSessionCheck = require('../middlewares/userSessionCheck')
 
 /*/users */
 /* /register*/
@@ -24,7 +26,8 @@ router
 /* Profile */
 
 router
-    .get ('/profile', profile);
+    .get ('/profile',userSessionCheck, profile)
+    .get ('/logout', logout);
 
 
     
