@@ -1,4 +1,4 @@
-const bcryptjs = require ('bcryptjs');
+    const bcryptjs = require ('bcryptjs');
 const {validationResult} = require('express-validator');
 
 /* User de models */
