@@ -1,76 +1,6 @@
 [
  {
   "id": 1,
-  "name": "Flemming",
-  "email": "fduetsche0@xrea.com",
-  "password": "gqW4IK",
-  "avatar": "http://dummyimage.com/227x152.bmp/dddddd/000000"
- },
- {
-  "id": 2,
-  "name": "Malanie",
-  "email": "mmoorcroft1@artisteer.com",
-  "password": "fxlIjS",
-  "avatar": "http://dummyimage.com/166x155.png/5fa2dd/ffffff"
- },
- {
-  "id": 3,
-  "name": "Alvis",
-  "email": "asergant2@weather.com",
-  "password": "OT1WbLZK",
-  "avatar": "http://dummyimage.com/201x127.jpg/cc0000/ffffff"
- },
- {
-  "id": 4,
-  "name": "Myrlene",
-  "email": "mpridding3@illinois.edu",
-  "password": "xWYqvnRjZWkw",
-  "avatar": "http://dummyimage.com/177x243.bmp/ff4444/ffffff"
- },
- {
-  "id": 5,
-  "name": "Claudius",
-  "email": "cruger4@sphinn.com",
-  "password": "o9nPpTmgjw",
-  "avatar": "http://dummyimage.com/166x173.jpg/cc0000/ffffff"
- },
- {
-  "id": 6,
-  "name": "Dagny",
-  "email": "dcolebourne6@moonfruit.com",
-  "password": "jMGTmryFx",
-  "avatar": "http://dummyimage.com/103x235.bmp/dddddd/000000"
- },
- {
-  "id": 7,
-  "name": "Dagny",
-  "email": "dcolebourne6@moonfruit.com",
-  "password": "jMGTmryFx",
-  "avatar": "http://dummyimage.com/103x235.bmp/dddddd/000000"
- },
- {
-  "id": 8,
-  "name": "Shayla",
-  "email": "smcnerlin7@comcast.net",
-  "password": "JEVAK0csiP",
-  "avatar": "http://dummyimage.com/185x185.bmp/5fa2dd/ffffff"
- },
- {
-  "id": 9,
-  "name": "Giralda",
-  "email": "gmitchely8@sakura.ne.jp",
-  "password": "mRxVkt",
-  "avatar": "http://dummyimage.com/111x188.png/ff4444/ffffff"
- },
- {
-  "id": 10,
-  "name": "George",
-  "email": "ggeerling9@ox.ac.uk",
-  "password": "McS4Xbg9jQ",
-  "avatar": "http://dummyimage.com/243x124.png/ff4444/ffffff"
- },
- {
-  "id": 12,
   "name": "Roman Riquelme",
   "password": "$2a$10$iRE5bBRyPZNREwCVwMLfHOhnFb3v2Js7KDes4j8q1zXv78jfYpqQu",
   "email": "hola@gmail.com",
@@ -79,16 +9,7 @@
   "avatar": "1662079974191_img.jpg"
  },
  {
-  "id": 13,
-  "name": "Matias Ezequiel Risso",
-  "password": "$2a$10$QVueneZGBLFSjto4bbTohejkM0uFOnZwa.mYL8X9GqpA82mbKfidW",
-  "email": "ezequielrisso1@hotmail.com",
-  "country": "Argentina",
-  "telefono": "66889900",
-  "avatar": "1662408236308_img.jpg"
- },
- {
-  "id": 14,
+  "id": 2,
   "name": "Goku",
   "password": "$2a$10$UculHn2j.Jtc6u/DeQGQcOmg2gdkPTKGFkqifkrSkB32yBu/Qn8.S",
   "email": "chau014@gmail.com",
@@ -97,7 +18,7 @@
   "avatar": "1662502140409_img.jpg"
  },
  {
-  "id": 15,
+  "id": 3,
   "name": "Oscar",
   "password": "$2a$10$uYtN8N5zzkhdyQeT7xTHfeiLYHnLANz1vJrO3Ma0i5y1Gsh7G7tfK",
   "email": "holaasdas@gmail.com",
