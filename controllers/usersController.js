@@ -1,4 +1,4 @@
-const bcryptjs = require ('bcryptjs');
+    const bcryptjs = require ('bcryptjs');
 const {validationResult} = require('express-validator');
 
 /* User de models */
@@ -90,5 +90,10 @@ module.exports = {
             title: 'Perfil',
             user: req.session.userLogged
         })
+    },
+    logout : (req,res) => {
+        req.session.destroy();
+        res.cookie('newHome',null,{maxAge: -1});
+        return res.redirect('/');
     }
 }
