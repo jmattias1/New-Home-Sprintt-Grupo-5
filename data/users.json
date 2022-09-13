@@ -32,7 +32,7 @@
   "password": "$2a$10$MZMaQM6o9ZGYTE7tC5wTCec3BqzZs0Hey7vqC8BRHer69R0sPetVW",
   "email": "hola2@gmail.com",
   "country": "Argentina",
-  "rol": "admin",
+  "rol": "usuario",
   "avatar": "1663085350848_img.jpg"
  }
 ]

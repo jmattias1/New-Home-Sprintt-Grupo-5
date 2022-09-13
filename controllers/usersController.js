@@ -96,8 +96,8 @@ module.exports = {
         })
     },
     logout : (req,res) => {
+        res.clearCookie('userEmail');
         req.session.destroy();
-        res.cookie('newHome',null,{maxAge: -1});
         return res.redirect('/');
     }
 }
