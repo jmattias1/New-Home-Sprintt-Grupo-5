@@ -15,6 +15,8 @@ var productsRouter = require('./routes/products');
 
 var app = express();
 
+const userLoggedMiddleware = require ('./middlewares/userLoggedMiddleware');
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
@@ -31,6 +33,8 @@ app.use(session({
   resave: false,
   saveUninitialized: false,
 }));
+
+app.use (userLoggedMiddleware);
 
 app.use(cookieCheck);
 app.use(localsUserCheck);

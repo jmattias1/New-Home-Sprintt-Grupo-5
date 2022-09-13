@@ -25,7 +25,11 @@
                     <%= locals.errors && errors.password ? errors.password.msg : null %>
                 </p>
                 <button class="enviar m-top50 m-botton25" type="submit">Enviar</button>
+                <label for="remember_user">
+                    <input type="checkbox" name="remember_user"> Recordar mi usuario
+                    </label>  
             </form>
+            
             <button class="radio bc-white">Olvidaste tu contraseña?</button>
 
             <a class="outsidelogo" href="/index"><img width="60px" height="60px" src="/img/logo 1.png"

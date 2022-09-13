@@ -3,18 +3,13 @@ const {check} = require('express-validator');
 module.exports = [
     check('name')
          .notEmpty().withMessage('Debe ingresar su nombre completo').bail()
-         .isAlpha().withMessage('El nombre debe contener solo letras')
          .isLength({
              min : 2,
              max : 25
          }).withMessage('Puede ingresar entre 2 y 25 caracteres'),
     check('email')
          .notEmpty().withMessage('El email es obligatorio').bail()
-         .isEmail().withMessage('Debe ser un email válido').bail()
-         .custom((value, {req}) => {
-             let user = users.find(user => user.email === value.trim());
-             return !!!user;
-         }).withMessage('Este email ya se encuentra registrado'),
+         .isEmail().withMessage('Debe ser un email válido').bail(),
          
     check('password')
          .notEmpty().withMessage('La contraseña es obligatoria').bail()
