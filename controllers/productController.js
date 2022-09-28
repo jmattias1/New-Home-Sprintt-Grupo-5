@@ -42,7 +42,7 @@ controller = {
     },
     update : (req,res) => {
         const errors = validationResult(req);
-        if(errors.isEmpty()){
+/*         if(errors.isEmpty()){  */
         const {id} = req.params; 
         const products = JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'data', 'products.json')));
         let {title, price,discount, description,section} = req.body;
@@ -62,14 +62,14 @@ controller = {
         })
         fs.writeFileSync(path.join(__dirname, '..', 'data', 'products.json'),JSON.stringify(productModify,null,3),'utf-8');    
         return res.redirect('/products/detail/' + id);    
-        }else{
+/*         } else{
             return res.render('edition', {
                 product : req.body,
                 id : req.params.id,
                 errors : errors.mapped()
 
             })
-        }
+        }  */
         
     },
     create: (req, res) => {
