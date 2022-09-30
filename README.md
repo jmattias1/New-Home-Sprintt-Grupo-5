@@ -15,7 +15,7 @@
 
 1. Opción. Dar clic en Code y luego en Donwload Zip.
 2. Opción. Crear una carpeta, ingresar a git bash y ejecutar
-
+- git clone
 `$https://github.com/jmattias1/Trabajo_Grupo_5_New-Home`
 
 
