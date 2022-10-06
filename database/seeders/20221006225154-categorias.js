@@ -25,6 +25,10 @@ const categories = [
     name: "Muebles",
     createdAt: new Date(),
   },
+  {
+    name: 'Hogar',
+    createdAt: new Date(),
+  }
 ];
 module.exports = {
   async up(queryInterface, Sequelize) {
