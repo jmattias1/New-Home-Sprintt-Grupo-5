@@ -1,24 +1,21 @@
-'use strict';
+"use strict";
+
+const imagesDB = require('../../data/images.json')
+
+const images = imagesDB.map(({image}, index) => {
+  return{
+    file: image,
+    productId : index +1,
+    createdAt : new Date()
+  }
+})
+
 
 module.exports = {
-  async up (queryInterface, Sequelize) {
-    /**
-     * Add seed commands here.
-     *
-     * Example:
-     * await queryInterface.bulkInsert('People', [{
-     *   name: 'John Doe',
-     *   isBetaMember: false
-     * }], {});
-    */
+  async up(queryInterface, Sequelize) {
+    await queryInterface.bulkInsert("Images", images, {});
   },
-
-  async down (queryInterface, Sequelize) {
-    /**
-     * Add commands to revert seed here.
-     *
-     * Example:
-     * await queryInterface.bulkDelete('People', null, {});
-     */
-  }
+  async down(queryInterface, Sequelize) {
+    await queryInterface.bulkDelete("Images", null, {});
+  },
 };

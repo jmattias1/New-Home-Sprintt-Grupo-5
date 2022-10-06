@@ -1,6 +1,13 @@
 "use strict";
 
-const products = 
+const productsDB = require('../../data/productssDB.json')
+
+const products = productsDB.map(product => {
+  return {
+    ...product,
+    createdAt: new Date()
+  }
+})
 
 
 module.exports = {
