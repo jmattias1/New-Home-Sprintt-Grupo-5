@@ -8,12 +8,30 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
+      orderId: {
+        type: Sequelize.INTEGER,
+        references: {
+          model: {
+            tableName: "Cart_orders",
+          },
+          key: "id",
+        },
+      },
+      productId : {
+        type: Sequelize.INTEGER,
+        references : {
+          model : {
+          tableName : 'Products'
+        },
+        key : 'id'
+        },
+        onDelete : 'cascade'
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE
       },
       updatedAt: {
-        allowNull: false,
         type: Sequelize.DATE
       },
       deletedAt: {

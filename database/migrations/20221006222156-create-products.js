@@ -20,12 +20,30 @@ module.exports = {
       description: {
         type: Sequelize.TEXT
       },
+      categoryId: {
+        type: Sequelize.INTEGER,
+        references: {
+          model: {
+            tableName: "Categories",
+          },
+          key: "id",
+        },
+      },
+      subCategoryId: {
+        type: Sequelize.INTEGER,
+        references: {
+          model: {
+            tableName: "subCategories",
+          },
+          key: "id",
+        },
+      },
+
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE
       },
       updatedAt: {
-        allowNull: false,
         type: Sequelize.DATE
       },
       deletedAt: {
