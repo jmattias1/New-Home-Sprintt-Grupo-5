@@ -29,6 +29,16 @@ module.exports = {
           key: "id",
         },
       },
+      subCategoryId: {
+        type: Sequelize.INTEGER,
+        references: {
+          model: {
+            tableName: "subCategories",
+          },
+          key: "id",
+        },
+      },
+
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE
