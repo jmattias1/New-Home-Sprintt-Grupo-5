@@ -8,7 +8,7 @@ const rols = [
   {
     name: "user",
     createdAt: new Date(),
-  }
+  },
 ];
 module.exports = {
   async up(queryInterface, Sequelize) {

@@ -1,16 +1,18 @@
 [
     {
-     "name": "Roman",
-     "surname":"Riquelme",
-     "password": "$2a$10$iRE5bBRyPZNREwCVwMLfHOhnFb3v2Js7KDes4j8q1zXv78jfYpqQu",
-     "email": "hola@gmail.com",
-     "rolId": 1
+      "name": "Roman",
+      "surname": "Riquelme",
+      "password": "$2a$10$iRE5bBRyPZNREwCVwMLfHOhnFb3v2Js7KDes4j8q1zXv78jfYpqQu",
+      "email": "hola@gmail.com",
+      "rolId": 1,
+      "avatar": "1662079974191_img.jpg"
     },
     {
-     "name": "Goku",
-     "surname": "Kakaroto",
-     "password": "$2a$10$UculHn2j.Jtc6u/DeQGQcOmg2gdkPTKGFkqifkrSkB32yBu/Qn8.S",
-     "email": "chau014@gmail.com",
-     "rolId": 1
+      "name": "Goku",
+      "surname": "Kakaroto",
+      "password": "$2a$10$UculHn2j.Jtc6u/DeQGQcOmg2gdkPTKGFkqifkrSkB32yBu/Qn8.S",
+      "email": "chau014@gmail.com",
+      "rolId": 1,
+      "avatar": "1662502140409_img.jpg"
     }
    ]

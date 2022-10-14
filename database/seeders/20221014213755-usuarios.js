@@ -1,15 +1,12 @@
 "use strict";
-const {hashSync} = require('bcryptjs')
-const userDB = require('../../data/userDB.json')
-
-const users = userDB.map(user => {
+const { hashSync } = require("bcryptjs");
+const usersDB = require("../../data/userDB.json");
+const users = usersDB.map((user) => {
   return {
     ...user,
-    createdAt: new Date()
-  }
-})
-
-
+    createdAt: new Date(),
+  };
+});
 module.exports = {
   async up(queryInterface, Sequelize) {
     await queryInterface.bulkInsert("Users", users, {});
