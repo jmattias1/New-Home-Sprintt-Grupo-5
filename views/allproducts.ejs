@@ -1,31 +1,34 @@
 <!DOCTYPE html>
 <html lang="es">
+<%- include('./partials/head') %>
 
-    <%- include('./partials/head') %> 
+	<body class="body-all">
+		<%- include('./partials/header') %>
+			<main class="main-all">
+				<h3>Todos los productos</h3>
+				<section class="section-all">
+					<% product.forEach(({id,name,images,discount,price})=> { %>
+						<article class="product-all">
+							<div class="div-all">
+								<a href="/products/detail/<%= id %> "><img class="img-all"
+										src="/img/<%= images[0].file %>" alt=""></a>
+								<div class="text-all">
+									<h2>$<%= toThousand(price - (price * discount / 100)) %>
+									</h2>
+									<span>
+										<%= discount %> % OFF
+									</span>
+									<p>
+										<%= name %>
+									</p>
+								</div>
+							</div>
+						</article>
+						<% }) %>
+				</section>
+			</main>
+			<!-- FOOTER -->
+			<%- include('./partials/footer') %>
+	</body>
 
-<body class="result">
-    <%- include('./partials/header') %> 
-
-    <main class="interesting_products">
-		<h3>Tus resultados sobre: </h3>
-		<div class="main_allProducts">
-		<div class="containsproduct">
-
-        	<% type.forEach(({id,title, image,discount,price}) => { %>		
-				<article>
-				<a href="/products/detail/<%= id %> "><img  class ="main__section__img" src="/img/<%= image %>" alt=""></a>	
-				<h5 class="interesting_products_border"><%= title %> </h5>
-				<p class="">$<%= price %> </p>
-				<p class=""><%= discount %> % OFF</p>  
-				</article>			  
-			<% }) %>
-			</div>
-			</div>
-		
-    </main>
-
-    
-<!-- FOOTER -->
-<%- include('./partials/footer') %> 
-</body>
 </html>

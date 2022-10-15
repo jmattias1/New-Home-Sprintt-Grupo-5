@@ -4,7 +4,7 @@ const toThousand = (n) => n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 
 module.exports = {
   index: (req, res) => {
-    let offer = db.Products.findAll({
+    let offer = db.Product.findAll({
       where: {
         discount: {
           [Op.gt]: 30,
@@ -14,7 +14,7 @@ module.exports = {
       order: [["discount", "DESC"]],
       include: ["images", "category"],
     });
-    newest = db.Products.findAll({
+    newest = db.Product.findAll({
       order: [["createdAt", "DESC"]],
       limit: 4,
       include: ["images", "category"],
@@ -29,7 +29,7 @@ module.exports = {
         },
       ],
     });
-    let console = db.Category.findByPk(2, {
+    let electro = db.Category.findByPk(5, {
       include: [
         {
           association: "products",
@@ -39,15 +39,27 @@ module.exports = {
         },
       ],
     });
+
+        let console = db.Category.findByPk(2, {
+          include: [
+            {
+              association: "products",
+              include: ["images"],
+              limit: 4,
+              order: [["createdAt", "DESC"]],
+            },
+          ],
+        });
     let category = db.Category.findAll(req.params.id);
-    Promise.all([offer, newest, tv, console, category])
-      .then(([offer, newest, tv, console, category]) => {
+    Promise.all([offer, newest, tv, console, category,electro])
+      .then(([offer, newest, tv, console, category,electro]) => {
         return res.render("index", {
           offer,
           tv,
           newest,
           console,
           category,
+          electro,
           toThousand,
         });
       })
@@ -56,7 +68,7 @@ module.exports = {
   search: (req, res) => {
     const { keywords } = req.query;
 
-    db.Products.findAll({
+    db.Product.findAll({
       where: {
         [Op.or]: [
           {

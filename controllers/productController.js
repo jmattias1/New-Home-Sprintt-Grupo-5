@@ -1,123 +1,179 @@
-const fs = require('fs');
-const path = require('path');
-const toThousand = n => n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
-
-const {validationResult} = require('express-validator');
-
+const db = require("../database/models");
+const { Op } = require("sequelize");
+const toThousand = (n) => n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+const { validationResult } = require("express-validator");
 
 controller = {
-    all : (req, res) => {
-        const products = JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'data', 'products.json')));
-        let selectType = req.params.nombre;
-        let type = products.filter(product => product.type === selectType);
-        const product = products.find(product => product.id === +req.params.id);
-        return res.render('allproducts', {
-             title: 'Products',
-             toThousand,
-             selectType,
-             products,
-             product,
-             type
+  all: (req, res) => {
+    db.Product.findAll({
+      include: ["images"],
+      order: ["name"],
+    })
+      .then((product) =>
+        res.render("allProducts", {
+          product,
+          toThousand,
+        })
+      )
+      .catch((error) => console.log(error));
+  },
+  detail: (req, res) => {
+    let product = db.Product.findByPk(req.params.id, {
+      include: ["images"],
+    });
+    let offer = db.Product.findAll({
+      where: {
+        discount: {
+          [Op.gt]: 20,
+        },
+      },
+      limit: 4,
+      order: [["createdAt", "DESC"]],
+      include: ["images", "category"],
+    });
+    Promise.all([product, offer])
+      .then(([product, offer]) => {
+        return res.render("productDetail", {
+          product,
+          offer,
+          toThousand,
+        });
+      })
+      .catch((error) => console.log(error));
+  },
+  edit: (req, res) => {
+    let categories = db.Category.findAll({
+      attributes: ["id", "name"],
+      order: ["name"],
+    });
+    let subcategories = db.subCategory.findAll({
+      attributes: ["id", "name"],
+      order: ["name"],
+    });
+    let product = db.Product.findByPk(req.params.id);
+    Promise.all([categories, product, subcategories]).then(
+      ([categories, product, subcategories]) => {
+        return res.render("edition", {
+          product,
+          categories,
+          subcategories,
+        });
+      }
+    );
+  },
+  update: (req, res) => {
+    db.Product.update(
+      {
+        ...req.body,
+        name: req.body.name,
+        description: req.body.description,
+      },
+      {
+        where: {
+          id: req.params.id,
+        },
+      }
+    )
+      .then(() => res.redirect("/"))
+      .catch((error) => console.log(error));
+  },
+  create: (req, res) => {
+    let categories = db.Category.findAll({
+      attributes: ["id", "name"],
+      order: ["name"],
+    });
+    let subcategories = db.subCategory.findAll({
+      attributes: ["id", "name"],
+      order: ["name"],
+    });
+    Promise.all([categories, subcategories])
+      .then(([categories, subcategories]) =>
+        res.render("productAdd", {
+          categories,
+          subcategories,
+        })
+      )
+      .catch((error) => console.log(error));
+  },
+  store: (req, res) => {
+    let errors = validationResult(req);
+    /* if (errors.isEmpty()) { */
+    db.Product.create({
+      ...req.body,
+      name: req.body.name,
+      description: req.body.description,
+    })
+      .then((product) => {
+        if (req.files.length) {
+          let images = req.files.map(({ filename }) => {
+            return {
+              file: filename,
+              productId: product.id,
+            };
+          });
+          db.Image.bulkCreate(images, {
+            validate: true,
+          }).then((result) => console.log(result));
+        }
+        return res.redirect("/");
+      })
+      .catch((error) => console.log(error));
+
+    /* db.Category.findAll({
+      order: ["name"],
+    }).then((categories) => {
+      res.render("products/productAdd", {
+        categories,
+        errors: errors.mapped(),
+        old: req.body,
+      });
+    }); */
+  },
+  cart: (req, res) => {
+    return res.render("productCart", {
+      title: "Carrito",
     });
   },
-    detail : (req,res) => {
-        const products = JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'data', 'products.json')));
-        const product = products.find(product => product.id === +req.params.id);
-        let loMejor = products.filter(product => product.section === "lo mejor" && product.discount <= 20 );
-
-        return res.render('productDetail',{
-            title : 'Detalle',
-            toThousand,
-            product,
-            loMejor
-        })
-    },
-    edit : (req,res) => {
-        const products = JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'data', 'products.json')));
-        const {id} = req.params;
-        let product = products.find(product => product.id === +id)
-        return res.render('edition',{
-            product
-        })
-    },
-    update : (req,res) => {
-        const errors = validationResult(req);
-/*         if(errors.isEmpty()){  */
-        const {id} = req.params; 
-        const products = JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'data', 'products.json')));
-        let {title, price,discount, description,section} = req.body;
-        const productModify = products.map(product => {
-            if(product.id === +id){
-                return {
-                    ...product,
-                    title : title.trim(),
-                    description : description.trim(),
-                    price : +price,
-                    discount : +discount,
-                    section
-                }
-            }else{
-                return product
-            }
-        })
-        fs.writeFileSync(path.join(__dirname, '..', 'data', 'products.json'),JSON.stringify(productModify,null,3),'utf-8');    
-        return res.redirect('/products/detail/' + id);    
-/*         } else{
-            return res.render('edition', {
-                product : req.body,
-                id : req.params.id,
-                errors : errors.mapped()
-
-            })
-        }  */
-        
-    },
-    create: (req, res) => {
-		return res.render('productAdd')
-	},
-	store: (req, res) => {
-        const errors = validationResult(req);
-        if(errors.isEmpty()){
-        const {price,section,discount,description,title,type} = req.body;
-        const products = JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'data', 'products.json'))); 
-        image = req.file.filename;
-        const newProduct = {
-            id : products[products.length - 1].id + 1,
-			title : title.trim(),
-			description : description.trim(),
-			price : +price,
-			discount : +discount,
-			section,
-            type,
-            image 
-		}
-		let productModify = [...products, newProduct]
-		fs.writeFileSync(path.join(__dirname, '..', 'data', 'products.json'),JSON.stringify(productModify,null,3),'utf-8');    
-		return res.redirect('/');    
-        }else{
-        return res.render('productAdd',{
-            errors : errors.mapped(),
-            old : req.body
-        })
-        }
-	}, 
-    cart : (req,res) => {
-        return res.render('productCart',{
-            title : 'Carrito'
-        })   
-    },
-    remove : (req,res) => {
-        return res.render('confirm', {
-            id : req.params.id
-        })
-    },
-    destroy : (req,res) => {
-        const {id} = req.params;
-        const products = JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'data', 'products.json')));
-        const productModify = products.filter(product => product.id !== +id) ;
-        fs.writeFileSync(path.join(__dirname, '..', 'data', 'products.json'),JSON.stringify(productModify,null,3),'utf-8');    
-        return res.redirect('/');
-    }
-}
+  remove: (req, res) => {
+    return res.render("confirm", {
+      id: req.params.id,
+    });
+  },
+  destroy: (req, res) => {
+    db.Product.destroy({
+      where: {
+        id: req.params.id,
+      },
+    })
+      .then(() => res.redirect("/"))
+      .catch((error) => console.log(error));
+  },
+  category: (req, res) => {
+    db.Category.findByPk(req.params.id, {
+      include: [
+        {
+          association: "products",
+          include: ["images"],
+        },
+      ],
+    })
+      .then((category) => {
+        return res.render("productCategory", {
+          category,
+          toThousand,
+        });
+      })
+      .catch((error) => console.log(error));
+  },
+  categoryV: (req, res) => {
+    db.Category.findAll(req.params.id)
+      .then((category) => {
+        return res.render("category", {
+          category,
+        });
+      })
+      .catch((error) => console.log(error));
+  },
+};
 
 module.exports = controller;
