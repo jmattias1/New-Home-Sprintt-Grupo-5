@@ -17,8 +17,8 @@ module.exports = [
              min : 4,
              max : 8
          }).withMessage('La contraseña debe contener entre 4 y 8 caracteres'),
-    check('country')
-         .notEmpty().withMessage('Debe seleccionar un pais'),
+//    check('country')
+//         .notEmpty().withMessage('Debe seleccionar un pais'),
      check('avatar')
           .custom((value,{req}) => {
                  let file = req.file;

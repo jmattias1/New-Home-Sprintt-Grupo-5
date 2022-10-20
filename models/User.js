@@ -27,9 +27,9 @@ const User = {
         return userFound;
     },
 
-    findByTag: function (tag, text) {
+    findByPk: function (pk, text) {
         let allUsers = this.findAll();
-        let userFound = allUsers.find (oneUser => oneUser[tag] === text);
+        let userFound = allUsers.find (oneUser => oneUser[pk] === text);
         return userFound;
     },
 

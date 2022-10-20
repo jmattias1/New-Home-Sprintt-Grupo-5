@@ -1,8 +1,6 @@
-    const bcryptjs = require ('bcryptjs');
+const db = require("../database/models");
 const {validationResult} = require('express-validator');
-
-/* User de models */
-const User = require ('../models/User');
+const bcryptjs = require ('bcryptjs');
 
 module.exports = {
   register: (req, res) => {
@@ -22,7 +20,7 @@ module.exports = {
       });
     }
 
-    let userInDB = User.findByTag("email", req.body.email);
+  /*   let userInDB = db.User.findByPk(req.body.email)
 
     if (userInDB) {
       return res.render("register", {
@@ -34,27 +32,26 @@ module.exports = {
         },
         oldData: req.body,
       });
-    }
+    } */
 
-    let userToCreate = {
-      ...req.body,
+    db.User.create({
+      name: req.body.name,
+      surname: req.body.surname,
+      email: req.body.email,
       password: bcryptjs.hashSync(req.body.password, 10),
-      avatar: req.file.filename,
-    };
+      avatar: req.body.filename,
+  });
 
-    User.create(userToCreate);
+  return res.redirect("/");
 
-    return res.redirect("/users/login");
   },
-
   login: (req, res) => {
     return res.render("login", {
       title: "Login",
     });
   },
-
   loginProcess: (req, res) => {
-    let userToLogin = User.findByTag("email", req.body.email);
+    let userToLogin = db.User.findByPk(req.body.email);
 
     if (userToLogin) {
       let isCorrectPassword = bcryptjs.compareSync(
@@ -104,4 +101,13 @@ module.exports = {
   logoutV: (req, res) => {
     return res.render("logout");
   },
+
+
+
 };
+
+
+
+
+
+
