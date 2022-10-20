@@ -12,35 +12,29 @@ module.exports = {
   processRegister: (req, res) => {
     const resultValidation = validationResult(req);
 
-    if (resultValidation.errors.length > 0) {
-      return res.render("register", {
-        title: "Register",
-        errors: resultValidation.mapped(),
-        oldData: req.body,
-      });
-    }
+    if (resultValidation.isEmpty()) {
 
-  /*   let userInDB = db.User.findByPk(req.body.email)
-
-    if (userInDB) {
-      return res.render("register", {
-        title: "Register",
-        errors: {
-          email: {
-            msg: "Este email ya esta registrado",
-          },
-        },
-        oldData: req.body,
-      });
-    } */
-
-    db.User.create({
-      name: req.body.name,
-      surname: req.body.surname,
-      email: req.body.email,
-      password: bcryptjs.hashSync(req.body.password, 10),
-      avatar: req.body.filename,
-  });
+      let {name, surname, email, password} = req.body;
+      
+      db.User.create({
+        name: name,
+        surname: surname,
+        email: email,
+        password: bcryptjs.hashSync(password, 10),
+        avatar: req.body.filename || 'default.png',
+        rolId: 2,
+    })
+        .then(() => {
+          res.redirect('/users/login')
+        })
+        .catch((error) => console.log(error));
+    } else {
+    return res.render("register", {
+      title: "Register",
+      errors: resultValidation.mapped(),
+      oldData: req.body,
+    });
+   }
 
   return res.redirect("/");
 
@@ -51,10 +45,16 @@ module.exports = {
     });
   },
   loginProcess: (req, res) => {
-    let userToLogin = db.User.findByPk(req.body.email);
+    const resultValidation = validationResult(req);
+    
+    const userToLogin = db.User.findOne({ 
+      where : {
+        email: req.body.email
+      }, 
+      })
 
     if (userToLogin) {
-      let isCorrectPassword = bcryptjs.compareSync(
+      let isCorrectPassword =  bcryptjs.compareSync(
         req.body.password,
         userToLogin.password
       );
@@ -86,13 +86,27 @@ module.exports = {
       },
     });
   },
-
-  profile: (req, res) => {
+  
+//Profile viejo
+/*   profile: (req, res) => {
     return res.render("userProfile", {
       title: "Perfil",
       user: req.session.userLogged,
     });
+  }, */
+  profile: async (req, res) => {
+    try {
+      let id = req.session.userLogged.id;
+      let user = await db.User.findByPk(id);
+      return res.render("userProfile", {
+        title: "Perfil"
+      },
+      user);
+    } catch (error) {
+      console.log(error);
+    }
   },
+
   logout: (req, res) => {
     res.clearCookie("userEmail");
     req.session.destroy();
