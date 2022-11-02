@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- HEAD -->
+<%- include('../partials/head') %>
+
+    <body>
+        <!-- HEADER -->
+        <%- include('../partials/header') %>
+            <main>
+                <section class="section-detail">
+                    <section class="maintop">
+                        <section class="producto">
+                            <div class="image-principal">
+                                <img src="/img/<%= product.images[0].file %> " alt="producto">
+                            </div>
+                            <div class="image-secundario">
+                                <% if (product.images.length> 1) { %>
+                                    <% product.images.forEach(({file})=> { %>
+                                        <img src="/img/<%= file %> " alt="producto">
+                                        <% }) %>
+                                            <% } %>
+                            </div>
+                        </section>
+                        <section class="price">
+                            <h5>
+                                <%= product.name %>
+                            </h5>
+                            <h6> <del>$<%= toThousand(product.price) %></del></h6>
+                            <h2>$<%= toThousand(product.price - (product.price * product.discount / 100)) %>
+                            </h2>
+                            <p class="promos_bank">¡Nuestras promociones bancarias!</p>
+                            <p class="promos">3 cuotas sin interes con los siguientes metodos de pago</p>
+                            <div class="cards">
+                                <img src="/img/cards/mastercard.png" alt="">
+                                <img src="/img/cards/santander.png" alt="">
+                                <img src="/img/cards/visa.png" alt="">
+                            </div>
+                            <div class="buttons">
+                                <% if (locals.userLogin && userLogin.rol===2) { %>
+                                    <a href="#" class="buttons-comprar">Comprar</a>
+                                    <a href="#" class="buttons-agregar">Agregar al carrito</a>
+                                    <% } %>
+
+                                    <% if (!locals.userLogin) { %>
+                                    <a href="/users/login" class="buttons-comprar">Comprar</a>
+                                    <a href="/users/login" class="buttons-agregar">Agregar al carrito</a>
+                                    <% } %>
+                            </div>
+                            <div class="button-admin">
+                                <% if (locals.userLogin && userLogin.rol===1) { %>
+                                    <a class="button-editar" href="/products/edit/<%= product.id %>">Editar</a>
+                                    <a class="button-eliminar" href="/products/delete/<%= product.id %>">Eliminar</a>
+                                    <% }%>
+                            </div>
+                            <div class="send">
+                                <div class="cuandollega">
+                                    <i class="fa-solid fa-arrow-rotate-left"></i>
+                                    <div class="sendtexto">
+                                        <p>Devolución gratis</p>
+                                        <p class="sendblue">Calcular cuando llega</p>
+                                    </div>
+                                </div>
+                                <div class="sucursales">
+                                    <i class="fa-solid fa-store"></i>
+                                    <div class="sendtexto">
+                                        <p>Retiro gratis en sucursal</p>
+                                        <p class="sendblue">Ver sucursales</p>
+                                    </div>
+                                </div>
+                            </div>
+                            </div>
+                        </section>
+                    </section>
+                    <div class="descripcion-detail">
+                        <h3>Descripción</h3>
+                        <p>
+                            <%= product.description %>
+                        </p>
+                    </div>
+                    <section class="interesting_products" style="margin: 1%;">
+                        <h3 style="font-family : Verdana, Geneva, Tahoma, sans-serif;">Aprovechá las ofertas destacadas
+                        </h3>
+                        <div class="containsproduct">
+                            <% offer.forEach(({id,name, images,discount,price})=> { %>
+                                <article>
+                                    <a href="/products/detail/<%= id %> "><img class="main__section__img"
+                                            src="/img/<%= images[0].file %>" alt=""></a>
+                                    <div class="article-text">
+                                        <p class="p2"><del>$<%= toThousand(price) %></del></p>
+                                        <h2 style="padding-right: 20px;">$<%= toThousand(price - (price * discount /
+                                                100)) %>
+                                        </h2>
+                                        <span>
+                                            <%= discount %>%OFF
+                                        </span>
+                                        <p>
+                                            <%= name %>
+                                        </p>
+                                    </div>
+                                </article>
+                                <% }) %>
+                        </div>
+                    </section>
+            </main>
+            </section>
+
+            <a class="outsidelogo" href="/index"><img width="60px" height="60px" src="/img/logo 1.png" alt="logo"></a>
+
+            </section>
+
+            <!-- FOOTER -->
+            <%- include('../partials/footer') %>
+
+    </body>
+
+</html>

@@ -9,10 +9,6 @@ a{
     text-decoration: none;
 }
 
-.header {
-background-color: #060608;
-}
-
 .d-flex {
     display: flex;
 }
@@ -96,11 +92,20 @@ background-color: #060608;
 
 
 .footer {
-    background-color: #ebebeb;
+
+    background-color: #202020;
     width: 100%;
     font-family: 'Roboto';
     font-weight: 600;
     padding: 3%;
+}
+.footer p{
+    font-size: 15px;
+    color: #ffff;
+}
+.footer li {
+    font-size: 15px;
+    color: #ffff;
 }
 
 .mt-20 {
@@ -194,4 +199,6 @@ background-color: #060608;
 
 
 }
+
+
 

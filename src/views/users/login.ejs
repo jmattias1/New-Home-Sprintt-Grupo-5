@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- HEAD -->
+<%- include('../partials/head') %>
+
+    <body class="body-form">
+        <main class="main-form">
+            <section class="section-form">
+                <h4>Ingresar</h4>
+                <form action="" method="POST">
+                    <div class="form-reg">
+                        <label for="email">CORREO ELECTRONICO</label>
+                        <input placeholder="mi@gmail.com" type="text" name="email" id="email"
+                            value="<%= locals.old && old.email ? old.email : null %>"
+                            class="form-control <%= locals.errors && errors.email ? 'is-invalid' : null %>">
+                        <p class="text-danger">
+                            <%= locals.errors && errors.email ? errors.email.msg : null %>
+                        </p>
+                    </div>
+                    <div class="form-reg">
+                        <label for="password">CONTRASEÑA</label>
+                        <input placeholder="********" type="password" name="password" id="password"
+                            value="<%= locals.old && old.password ? old.password : null %>"
+                            class="form-control <%= locals.errors && errors.password ? 'is-invalid' : null %>">
+                        <p class="text-danger">
+                            <%= locals.errors && errors.password ? errors.password.msg : null %>
+                        </p>
+                    </div>
+                    <div class="form-reg">
+                        <button class="" type="submit">INGRESAR</button>
+                    </div>
+                    <div class="text-olvide">
+                        <p><a href="">Olvide mi contraseña</a></p>
+                    </div>
+                    <hr class="hr-register">
+                    <div class="text-register">
+                        <p class="login-text">¿No tenes cuentra?</p>
+                        <p><a href="/users/register">REGISTRARTE</a></p>
+                    </div>
+                </form>
+            </section>
+        </main>
+
+    </body>
+
+</html>

@@ -3,24 +3,14 @@
 - Este proyecto fue hecho para la plataforma digital house del curso Desarrollador web Full Stack
 - Inicio 01/05/22
 ## Participantes
-**Daniel Martinez Lozano**
-
-**Matias Risso**
-
-**Maximiliano Bazan**
-
-**Mariana Ferreyra**
+**Daniel Gustavo Martinez Lozano**
 
 ## INSTALACIÓN
 
 1. Opción. Dar clic en Code y luego en Donwload Zip.
 2. Opción. Crear una carpeta, ingresar a git bash y ejecutar
-- git clone
-`$https://github.com/jmattias1/Trabajo_Grupo_5_New-Home`
 
-
-- Trello
-`$https://trello.com/b/OnldXuwr/c16-grupo-5-new-home`
+`$ https://github.com/Danielmartinez25/New-Home.git`
 
 ## Entorno de trabajo
 
@@ -50,4 +40,3 @@ Utilizamos la base de datos:
 
 ### ORM
 - Sequelize
-
