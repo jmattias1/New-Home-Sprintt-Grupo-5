@@ -4,6 +4,8 @@
 - Inicio 01/05/22
 ## Participantes
 **Daniel Gustavo Martinez Lozano**
+**Maximiliano Bazan**
+**Matias Risso**
 
 ## INSTALACIÓN
 
