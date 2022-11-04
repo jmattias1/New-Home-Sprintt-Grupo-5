@@ -33,10 +33,7 @@ module.exports = [
     .isEmail()
     .withMessage("Debe ser un email válido")
     .bail()
-    .custom((value, { req }) => {
-      let user = users.find((user) => user.email === value.trim());
-      return !!!user;
-    })
+
     .withMessage("Este email ya se encuentra registrado"),
 
   check("password")
