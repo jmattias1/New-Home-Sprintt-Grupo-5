@@ -100,12 +100,13 @@ controller = {
   },
   store: (req, res) => {
     let errors = validationResult(req);
-    /* if (errors.isEmpty()) {*/
-    db.Product.create({
+     if (errors.isEmpty()) {
+     db.Product.create({
       ...req.body,
       name: req.body.name,
       description: req.body.description,
     })
+    
       .then((product) => {
         if (req.files.length) {
           let images = req.files.map(({ filename }) => {
@@ -118,10 +119,11 @@ controller = {
             validate: true,
           }).then((result) => console.log(result));
         }
-        return res.redirect("/");
+        return res.redirect("detail/" + req.params.id);
       })
       .catch((error) => console.log(error))
-     /*  } */ /* else { 
+    }else { 
+    let product = db.Product.findByPk(req.params.id)
     let categories = db.Category.findAll({
       attributes: ["id", "name"],
       order: ["name"],
@@ -130,16 +132,18 @@ controller = {
       attributes: ["id", "name"],
       order: ["name"],
     });
-    Promise.all([categories,subcategories])
-    .then(([categories,subcategories]) => {
+    Promise.all([categories,subcategories,product])
+    .then(([categories,subcategories,product]) => {
       res.render("products/add", {
         categories,
         subcategories,
+        product,
         errors: errors.mapped(),
         old: req.body,
+        title : "Vender"
       });
     }) 
-  }*/
+  }
 },
   cart: (req, res) => {
     return res.render("products/cart", {
@@ -158,7 +162,7 @@ controller = {
         id: req.params.id,
       },
     })
-      .then(() => res.redirect("products/all"))
+      .then(() => res.redirect("/"))
       .catch((error) => console.log(error));
   },
   categoryV: (req, res) => {
