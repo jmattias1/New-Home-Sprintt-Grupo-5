@@ -20,7 +20,7 @@
 }
 
 .product-result {
-    width: 40%;
+    width: 20%;
     margin: 10px 5px 10px 5px;
     border: 1px solid #ebebeb;
     border-radius: 5px;
@@ -30,12 +30,11 @@
 }
 
 .div-result {
-    margin: 0%;
     width: 100%;
 }
 
 .product-result img {
-    height: 300px;
+    height: 200px;
     width: 100%;
     object-fit: contain;
 }
