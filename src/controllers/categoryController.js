@@ -5,7 +5,7 @@ const { validationResult } = require("express-validator");
 
 module.exports = {
   category: (req, res) => {
-    db.Category.findByPk(req.params.id, {
+     let category = db.Category.findByPk(req.params.id, {
       include: [
         {
           association: "products",
@@ -13,9 +13,16 @@ module.exports = {
         },
       ],
     })
-      .then((category) => {
+    let cheap = db.Product.findAll({
+      order : [["price", "ASC"]],
+      limit : 4,
+      include : ["images", "category"]
+    })
+    Promise.all([category,cheap])
+      .then(([category,cheap]) => {
         return res.render("products/category", {
           category,
+          cheap,
           toThousand,
           title: category.name,
         });
