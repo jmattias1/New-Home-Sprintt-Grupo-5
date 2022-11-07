@@ -6,7 +6,7 @@
         <%- include('../partials/header') %>
             <main class="main-all">
                 <% if (category.products.length > 0) { %>
-                <h3>Todo en <%= category.name %> en New Home</h3>
+                <h3>Todos los <%= category.name %> en New Home</h3>
                 <section class="section-all">
                     <% category.products.forEach(({id,name,images,discount,price})=> { %>
                         <article class="product-all">
@@ -27,9 +27,8 @@
                         </article>
                         <% }) %> 
                 <% } else {%>
-                    <div class="col-12">
-						<h2 class="products-title" style="color: tomato;">No hay productos que coincidan con esa
-							búsqueda</h2>
+                    <div class="result-failed">
+						<h2 class="products-title" style="color: tomato;">No hay productos que coincidan con esabúsqueda</h2>
 					</div>
                 <% } %>
                 </section>
