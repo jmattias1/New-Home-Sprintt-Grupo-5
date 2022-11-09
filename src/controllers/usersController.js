@@ -1,10 +1,7 @@
 const bcryptjs = require("bcryptjs");
 const { validationResult } = require("express-validator");
-const { where } = require("sequelize");
 const db = require("../database/models");
-const path = require("path");
-const fs = require("fs");
-const { Console } = require("console");
+
 module.exports = {
   edit: (req, res) => {
     db.User.findByPk(req.params.id)
@@ -19,18 +16,19 @@ module.exports = {
     const {name,surname,email,password} = req.body;
     db.User.update(
       {
-      name : name?.trim(),
-      surname : surname?.trim(),
-      email: email?.trim(),
-      password : password
+        name: name?.trim(),
+        surname: surname?.trim(),
+        email: email?.trim(),
+        password:bcryptjs.hashSync(password, 10),
       },
       {
         where: {
           id: req.params.id,
         },
       }
-    ).then(()=> res.redirect('/'))
-    .catch((error)=> console.log(error))
+    )
+      .then(() => res.redirect("/"))
+      .catch((error) => console.log(error));
   },
   register: (req, res) => {
     let countries = db.Country.findAll({
