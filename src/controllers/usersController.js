@@ -4,32 +4,33 @@ const { where } = require("sequelize");
 const db = require("../database/models");
 const path = require("path");
 const fs = require("fs");
+const { Console } = require("console");
 module.exports = {
   edit: (req, res) => {
-    let user = db.User.findByPk(req.params.id);
-    Promise.all([address, user]).then(([address, user]) => {
+    db.User.findByPk(req.params.id)
+    .then(user => {
       return res.render("users/edit", {
-        address,
         user,
         title: "Editar usuario",
       });
     });
   },
   update: (req, res) => {
+    const {name,surname,email,password} = req.body;
     db.User.update(
       {
-        ...req.body,
+      name : name?.trim(),
+      surname : surname?.trim(),
+      email: email?.trim(),
+      password : password
       },
       {
         where: {
           id: req.params.id,
         },
       }
-    )
-      .then(() => {
-        return res.send("/");
-      })
-      .catch((error) => console.log(error));
+    ).then(()=> res.redirect('/'))
+    .catch((error)=> console.log(error))
   },
   register: (req, res) => {
     let countries = db.Country.findAll({

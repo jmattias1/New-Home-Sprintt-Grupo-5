@@ -11,9 +11,9 @@ module.exports = [
     .custom((value, { req }) => {
       let password = req.body.password;
       if (password) {
-      throw new Error("Contraseña incorrecta");
+            return true;
       }
-      return true;
+      throw new Error ("contraseña incorrecta") ;
     })
     .notEmpty()
     .withMessage("El password es obligatorio"),
