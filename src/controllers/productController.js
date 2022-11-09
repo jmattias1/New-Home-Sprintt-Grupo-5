@@ -5,12 +5,15 @@ const { validationResult } = require("express-validator");
 
 controller = {
   all: (req, res) => {
-    db.Product.findAll({
+    let category = db.Category.findAll();
+    let product = db.Product.findAll({
       include: ["images"],
       order: ["name"],
     })
-      .then((product) =>
+    Promise.all([category,product])
+      .then(([category,product]) =>
         res.render("products/all",{
+          category,
           product,
           toThousand,
           title: "Todos los Productos",

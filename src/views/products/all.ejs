@@ -4,6 +4,18 @@
 <body class="body-all">
     <%- include('../partials/header') %> 
     <main class="main-all">
+						<div class="hr">
+							<hr>
+						</div>
+						<div class="category">
+							<ul style="margin-bottom: 0%;">
+								<% category.forEach(({id,name})=> { %>
+									<li><a href="/category/<%= id %>">
+											<%= name %>
+										</a></li>
+									<% }) %>
+							</ul>
+						</div>
 		<h3>Todos los productos</h3>
 		<section class="section-all">
         	<% product.forEach(({id,name,images,discount,price}) => { %>		
