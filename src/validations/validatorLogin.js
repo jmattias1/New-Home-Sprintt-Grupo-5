@@ -10,6 +10,7 @@ module.exports = [
   check("password")
     .custom((value, { req }) => {
       let password = req.body.password;
+      
       if (password) {
             return true;
       }

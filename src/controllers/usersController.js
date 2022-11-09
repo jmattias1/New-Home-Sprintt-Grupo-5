@@ -14,6 +14,8 @@ module.exports = {
   },
   update: (req, res) => {
     const {name,surname,email,password} = req.body;
+    const errors = validationResult(req)
+    if (errors.isEmpty()) {
     db.User.update(
       {
         name: name?.trim(),
@@ -28,7 +30,19 @@ module.exports = {
       }
     )
       .then(() => res.redirect("/"))
-      .catch((error) => console.log(error));
+      .catch((error) => console.log(error));  
+    }else{
+      db.User.findByPk(req.params.id)
+      .then(user => {
+        return res.render('users/edit',{
+          user,
+          old :req.body,
+          errors: errors.mapped(),
+          title : "Editar usuario"
+        })
+      })
+    }
+    
   },
   register: (req, res) => {
     let countries = db.Country.findAll({
