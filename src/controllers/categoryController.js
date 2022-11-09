@@ -1,25 +1,25 @@
 const db = require("../database/models");
 const { Op } = require("sequelize");
 const toThousand = (n) => n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
-const { validationResult } = require("express-validator");
 
 module.exports = {
   category: (req, res) => {
-     let category = db.Category.findByPk(req.params.id, {
+    let category = db.Category.findByPk(req.params.id, {
+      order: [["name", "ASC"]],
       include: [
         {
           association: "products",
           include: ["images"],
         },
       ],
-    })
+    });
     let cheap = db.Product.findAll({
-      order : [["price", "ASC"]],
-      limit : 4,
-      include : ["images", "category"]
-    })
-    Promise.all([category,cheap])
-      .then(([category,cheap]) => {
+      order: [["price", "ASC"]],
+      limit: 4,
+      include: ["images", "category"],
+    });
+    Promise.all([category, cheap])
+      .then(([category, cheap]) => {
         return res.render("products/category", {
           category,
           cheap,
@@ -86,23 +86,23 @@ module.exports = {
       })
       .catch((error) => console.log(error));
   },
-  freetime : (req,res) => {
-        db.Category.findByPk(8, {
-          include: [
-            {
-              association: "products",
-              include: ["images"],
-              order: [["createdAt", "DESC"]],
-            },
-          ],
-        })
-          .then((freetime) => {
-            return res.render("category/freetime", {
-              freetime,
-              toThousand,
-              title: "Tiempo Libre",
-            });
-          })
-          .catch((error) => console.log(error));
-  }
+  freetime: (req, res) => {
+    db.Category.findByPk(8, {
+      include: [
+        {
+          association: "products",
+          include: ["images"],
+          order: [["createdAt", "DESC"]],
+        },
+      ],
+    })
+      .then((freetime) => {
+        return res.render("category/freetime", {
+          freetime,
+          toThousand,
+          title: "Tiempo Libre",
+        });
+      })
+      .catch((error) => console.log(error));
+  },
 };
