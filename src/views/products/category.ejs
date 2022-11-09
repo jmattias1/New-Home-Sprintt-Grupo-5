@@ -9,8 +9,8 @@
                 <div class="hr">
                     <hr>
                 </div>
-                <div class="category">
-                    <ul>
+                <div class="category" >
+                    <ul style="margin-bottom: 0%;">
                         <% categories.forEach(({id,name})=> { %>
                             <li><a href="/category/<%= id %>">
                                     <%= name %>
@@ -18,7 +18,7 @@
                             <% }) %>
                     </ul>
                 </div>
-                <% if (category.products.length> 0) { %>
+                <% if (category.products.length> 1) { %>
                     <h3>Todo en <%= category.name %> New Home</h3>
                     <section class="section-result">
                         <% category.products.forEach(({id,name,images,discount,price})=> { %>
