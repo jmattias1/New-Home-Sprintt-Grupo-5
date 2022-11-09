@@ -59,7 +59,7 @@ module.exports = {
       smartphone,
       freetime,
       muebles,
-      electrodomesticos
+      electrodomesticos,
     ])
       .then(
         ([
@@ -74,7 +74,7 @@ module.exports = {
           smartphone,
           freetime,
           muebles,
-          electrodomesticos
+          electrodomesticos,
         ]) => {
           return res.render("index", {
             offer,
@@ -97,9 +97,10 @@ module.exports = {
       .catch((error) => console.log(error));
   },
   search: (req, res) => {
+    let category = db.Category.findAll();
     const { keywords } = req.query;
 
-    db.Product.findAll({
+    let products = db.Product.findAll({
       where: {
         [Op.or]: [
           {
@@ -110,13 +111,27 @@ module.exports = {
         ],
       },
       include: ["images"],
-    })
-      .then((products) => {
+    });
+    let offer = db.Product.findAll({
+      where: {
+        discount: {
+          [Op.gt]: 30,
+        },
+      },
+      limit: 4,
+      order: [["discount", "DESC"]],
+      include: ["images", "category"],
+    });
+
+    Promise.all([category, products,offer])
+      .then(([category, products,offer]) => {
         return res.render("results", {
+          category,
+          offer,
           products,
           keywords,
           toThousand,
-          title : "Resultado"
+          title: "Resultado",
         });
       })
       .catch((error) => console.log(error));
