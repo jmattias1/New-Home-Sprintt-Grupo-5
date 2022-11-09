@@ -6,7 +6,6 @@ const path = require("path");
 const fs = require("fs");
 module.exports = {
   edit: (req, res) => {
-    let address = db.Address.findByPk(req.params.id);
     let user = db.User.findByPk(req.params.id);
     Promise.all([address, user]).then(([address, user]) => {
       return res.render("users/edit", {
