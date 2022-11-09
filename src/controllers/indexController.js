@@ -45,7 +45,7 @@ module.exports = {
     let freetime = db.Category.findByPk(8);
     let lg = db.subCategory.findByPk(5);
     let samsung = db.subCategory.findByPk(7);
-    let category = db.Category.findAll(req.params.id);
+    let category = db.Category.findAll();
     let subcategory = db.subCategory.findAll(req.params.id);
     Promise.all([
       offer,

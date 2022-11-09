@@ -6,6 +6,18 @@
         <%- include('../partials/header') %>
 
             <main class="main-result">
+                <div class="hr">
+                    <hr>
+                </div>
+                <div class="category">
+                    <ul>
+                        <% categories.forEach(({id,name})=> { %>
+                            <li><a href="/category/<%= id %>">
+                                    <%= name %>
+                                </a></li>
+                            <% }) %>
+                    </ul>
+                </div>
                 <% if (category.products.length> 0) { %>
                     <h3>Todo en <%= category.name %> New Home</h3>
                     <section class="section-result">
@@ -26,13 +38,15 @@
                                     </div>
                                 </div>
                             </article>
-                            <% })  %>
-                             
+                            <% }) %>
+
                                 <% } else {%>
                                     <div class="msj-category">
                                         <p>No se encontraron productos en esta categoria</p>
                                         <% if (locals.userLogin && userLogin.rol===1 ) { %>
-                                            <span><a style="color: green;" href="/products/create">¿Desea <i class="fa-sharp fa-solid fa-bag-shopping"></i> Vender?</a></span>
+                                            <span><a style="color: green;" href="/products/create">¿Desea <i
+                                                        class="fa-sharp fa-solid fa-bag-shopping"></i>
+                                                    Vender?</a></span>
                                             <% } %>
                                     </div>
                                     <section class="interesting_products">
@@ -66,4 +80,5 @@
             <!-- FOOTER -->
             <%- include('../partials/footer') %>
     </body>
+
 </html>

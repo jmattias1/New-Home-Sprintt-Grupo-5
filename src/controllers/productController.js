@@ -19,6 +19,7 @@ controller = {
       .catch((error) => console.log(error));
   },
   detail: (req, res) => {
+    let category = db.Category.findAll()
     let product = db.Product.findByPk(req.params.id, {
       include: ["images"],
     });
@@ -32,9 +33,10 @@ controller = {
       order: [["discount", "DESC"]],
       include: ["images", "category"],
     });
-    Promise.all([product, offer])
-      .then(([product, offer]) => {
+    Promise.all([category,product, offer])
+      .then(([category,product, offer]) => {
         return res.render("products/detail", {
+          category,
           product,
           offer,
           toThousand,

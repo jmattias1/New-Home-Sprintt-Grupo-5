@@ -4,6 +4,7 @@ const toThousand = (n) => n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 
 module.exports = {
   category: (req, res) => {
+    let categories = db.Category.findAll()
     let category = db.Category.findByPk(req.params.id, {
       order: [["name", "ASC"]],
       include: [
@@ -18,9 +19,10 @@ module.exports = {
       limit: 4,
       include: ["images", "category"],
     });
-    Promise.all([category, cheap])
-      .then(([category, cheap]) => {
+    Promise.all([categories,category, cheap])
+      .then(([categories,category, cheap]) => {
         return res.render("products/category", {
+          categories,
           category,
           cheap,
           toThousand,
