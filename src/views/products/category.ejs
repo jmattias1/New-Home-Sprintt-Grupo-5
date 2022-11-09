@@ -26,13 +26,18 @@
                                     </div>
                                 </div>
                             </article>
-                            <% }) %>
+                            <% })  %>
+                             
                                 <% } else {%>
                                     <div class="msj-category">
-                                    <p>No se encontraron productos en esta categoria</p>
+                                        <p>No se encontraron productos en esta categoria</p>
+                                        <% if (locals.userLogin && userLogin.rol===1 ) { %>
+                                            <span><a style="color: green;" href="/products/create">¿Desea <i class="fa-sharp fa-solid fa-bag-shopping"></i> Vender?</a></span>
+                                            <% } %>
                                     </div>
                                     <section class="interesting_products">
-                                        <h2 style="font-family: 'roboto'; margin-left : 2%;">Aprovechá los precios mas bajos</h2>
+                                        <h4 style="font-family: 'roboto'; margin-left : 2%;">Aprovechá los precios mas
+                                            bajos</h4>
                                         <div class="containsproduct">
                                             <% cheap.forEach(({id,name, images,discount,price})=> { %>
                                                 <article>
