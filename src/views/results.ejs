@@ -10,13 +10,38 @@
 			</div>
 			<div class="category">
 				<ul>
-					<% category.forEach(({id,name})=> { %>
+					<% categories.forEach(({id,name})=> { %>
 						<li><a href="/category/<%= id %>">
 								<%= name %>
 							</a></li>
 						<% }) %>
 				</ul>
 			</div>
+
+
+			<section class="main__section">
+				<section class="interesting_products">
+					<h3>Tus resultados de <%= keywords %> son: </h3>
+					<div class="containsproduct">
+						<% category.products.forEach(({id,name, images,discount,price})=> { %>
+							<article>
+								<a href="/products/detail/<%= id %> "><img class="main__section__img"
+										src="/img/<%= images[0].file %>" alt=""></a>
+								<div class="article-text">
+									<p class="p2"><del>$<%= toThousand(price) %></del></p>
+									<h2 style="padding : 0%; padding-left : 10px">$<%= toThousand(price - (price * discount /
+											100))%>
+									</h2><span style="margin-left : 10px">
+										<%= discount %>%OFF
+									</span>
+									<p>
+										<%= name %>
+									</p>
+								</div>
+							</article>
+							<% }) %>
+					</div>
+				</section>
 			<main class="interesting_products">
 				<% if (products.length> 0) { %>
 					<section class="main__section">

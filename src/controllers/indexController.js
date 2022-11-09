@@ -97,7 +97,7 @@ module.exports = {
       .catch((error) => console.log(error));
   },
   search: (req, res) => {
-    let category = db.Category.findAll();
+    let categories = db.Category.findAll();
     const { keywords } = req.query;
 
     let products = db.Product.findAll({
@@ -112,7 +112,7 @@ module.exports = {
       },
       include: ["images"],
     });
-    let categories = db.Category.findAll({
+    let category = db.Category.findAll({
       where: {
         [Op.or]: [
           {
@@ -122,8 +122,12 @@ module.exports = {
           },
         ],
       },
-      association: "products",
-      include: ["images"],
+      include: [
+        {
+          association: "products",
+          include: ["images"]
+        },
+      ],
     });
     let offer = db.Product.findAll({
       where: {
