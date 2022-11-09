@@ -112,6 +112,19 @@ module.exports = {
       },
       include: ["images"],
     });
+    let categories = db.Category.findAll({
+      where: {
+        [Op.or]: [
+          {
+            name: {
+              [Op.substring]: keywords,
+            },
+          },
+        ],
+      },
+      association: "products",
+      include: ["images"],
+    });
     let offer = db.Product.findAll({
       where: {
         discount: {
@@ -123,10 +136,11 @@ module.exports = {
       include: ["images", "category"],
     });
 
-    Promise.all([category, products,offer])
-      .then(([category, products,offer]) => {
+    Promise.all([category, products,offer,categories])
+      .then(([category, products,offer,categories]) => {
         return res.render("results", {
           category,
+          categories,
           offer,
           products,
           keywords,
