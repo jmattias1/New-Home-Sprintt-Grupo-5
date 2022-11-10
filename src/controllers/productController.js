@@ -124,7 +124,7 @@ controller = {
             validate: true,
           }).then((result) => console.log(result));
         }
-        return res.redirect("detail/" + req.params.id);
+        return res.redirect("products/all");
       })
       .catch((error) => console.log(error))
     }else { 
