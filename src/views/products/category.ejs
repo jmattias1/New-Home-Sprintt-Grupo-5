@@ -4,13 +4,11 @@
 
     <body class="body-all">
         <%- include('../partials/header') %>
-
-            <main class="main-result">
                 <div class="hr">
                     <hr>
                 </div>
                 <div class="category">
-                    <ul style="margin-bottom: 0%;">
+                    <ul>
                         <% categories.forEach(({id,name})=> { %>
                             <li><a href="/category/<%= id %>">
                                     <%= name %>
@@ -18,6 +16,7 @@
                             <% }) %>
                     </ul>
                 </div>
+            <main class="main-result">
                 <% if (category.products.length> 1) { %>
                     <h3>Todo en <%= category.name %> New Home</h3>
                     <section class="section-result">
