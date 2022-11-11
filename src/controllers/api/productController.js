@@ -9,19 +9,20 @@ module.exports = {
         include: [{ association: "images" }, { association: "category" }],
       });
       return res.status(200).json({
-        ok : true,
+        ok: true,
         status: 200,
-        total : products.length,
-        url : getUrl(req),
-        data : products
-
+        total: products.length,
+        url: getUrl(req),
+        data: products,
       });
-    } catch (error) { sendJsonError(error,res)
+    } catch (error) {
+      sendJsonError(error, res);
     }
   },
   store: async (req, res) => {
     try {
-      const { name, price, discount, description, categoryId,subcategoryId } = req.body;
+      const { name, price, discount, description, categoryId, subcategoryId } =
+        req.body;
 
       const product = await db.Product.create({
         name: name?.trim(),
@@ -65,12 +66,72 @@ module.exports = {
         ok: true,
         status: 201,
         data: product,
-        url : getUrl(req)
+        url: getUrl(req),
       });
     } catch (error) {
       sendJsonError(error, res);
     }
   },
-  update: async (req, res) => {},
+  update: async (req, res) => {
+    const { name, price, discount, description, categoryId,subcategoryId } = req.body;
+    const { id } = req.params; /* id product */
+    const { deletePreviousImages } = req.query;
+    try {
+      const product = await db.Product.findByPk(id, {
+        include: [
+          {
+            association: "images",
+            attributes: {
+              exclude: ["createdAt", "updatedAt", "deletedAt"],
+            },
+          },
+          {
+            association: "category",
+            attributes: {
+              exclude: ["createdAt", "updatedAt", "deletedAt"],
+            },
+          },
+        ],
+      });
+
+      product.name = name?.trim() || product.name;
+      product.price = +price || product.price;
+      product.discount = +discount || product.discount;
+      product.description = description?.trim() || product.description;
+      product.categoryId = +categoryId || product.categoryId;
+      product.subcategoryId = +subcategoryId || product.subcategoryId;
+
+      await product.save();
+
+      if (+deletePreviousImages === 1) {
+        product.images.forEach(async (img) => {
+          await img.destroy();
+          unlinkSync(
+            path.join(__dirname, `../../public/img/${img.file}`)
+          );
+        });
+      }
+
+      if (req.files?.length) {
+        const images = req.files.map((file) => {
+          return {
+            file: file.filename,
+            productId: product.id,
+          };
+        });
+
+        await db.Image.bulkCreate(images);
+      }
+
+      res.status(200).json({
+        ok: true,
+        status: 200,
+        /* data: await product.reload() */
+        url: getUrl(req),
+      });
+    } catch (error) {
+      sendJsonError(error, res);
+    }
+  },
   destroy: async (req, res) => {},
 };
