@@ -40,9 +40,101 @@ module.exports = {
       sendJsonError(error, res);
     }
   },
-  login: async (req, res) => {},
-  edit: async (req, res) => {},
-  update: async (req, res) => {},
+  login: async (req, res) => {
+    try {
+      const { email, password } = req.body;
+
+      if (!email || !password) {
+        return sendJsonError("El email y password son requeridos", res, 401);
+      }
+
+      const user = await db.User.findOne({ where: { email } });
+
+      const {
+        id,
+        rolId,
+        password: passwordHash,
+      } = user || { id: null, rolId: null, password: null };
+
+      if (!user) {
+        return sendJsonError(
+          "No existe ningún usuario con ese email",
+          res,
+          404
+        );
+      }
+
+      const isPassValid = await compare(password, passwordHash);
+
+      if (!isPassValid) {
+        return sendJsonError("Credenciales invalidas", res);
+      }
+
+      /*       const token = await sign({ id, rolId }, process.env.SECRET_KEY_JWT, {
+        expiresIn: "4h",
+      }); */
+
+      res.status(200).json({
+        ok: true,
+        status: 200,
+        /*         token,
+              urlData: `${req.protocol}://${req.get("host")}${
+                req.baseUrl
+              }/me/${token}`, */
+      });
+    } catch (error) {
+      sendJsonError(error, res);
+    }
+  },
+  update: async (req, res) => {
+    const { id } = req.userToken;
+    const { name, surname, street, city, province } = req.body;
+    try {
+      const options = {
+        include: [
+          {
+            association: "addresses",
+            attributes: {
+              exclude: ["userId", "deletedAt"],
+            },
+          },
+        ],
+        attributes: {
+          exclude: ["deletedAt", "password"],
+          include: [literalQueryUrlImage(req, "avatar", "avatar", "/users")],
+        },
+      };
+      const user = await db.User.findByPk(id, options);
+
+      user.name = name?.trim() || user.name;
+      user.surname = surname?.trim() || user.surname;
+      user.avatar = req.file?.filename || user.avatar;
+
+      const indexAddressActive = user.addresses.findIndex(
+        (address) => address.active === true
+      );
+      const address = user.addresses[indexAddressActive];
+
+      address.street = street?.trim() || address.street;
+      address.city = city?.trim() || address.city;
+      address.province = province?.trim() || address.province;
+
+      await user.save();
+      await address.save();
+
+      return res.status(200).json({
+        ok: true,
+        status: 200,
+        data: user,
+      });
+    } catch (error) {
+      res.status(500).json({
+        ok: false,
+        status: 500,
+        msg: error.message || "Ocurrió un error",
+      });
+    }
+  },
   remove: async (req, res) => {
     try {
       const userId = req.params.id || req.userToken.id;
