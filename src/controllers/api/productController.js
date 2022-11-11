@@ -73,7 +73,8 @@ module.exports = {
     }
   },
   update: async (req, res) => {
-    const { name, price, discount, description, categoryId,subcategoryId } = req.body;
+    const { name, price, discount, description, categoryId, subcategoryId } =
+      req.body;
     const { id } = req.params; /* id product */
     const { deletePreviousImages } = req.query;
     try {
@@ -106,9 +107,7 @@ module.exports = {
       if (+deletePreviousImages === 1) {
         product.images.forEach(async (img) => {
           await img.destroy();
-          unlinkSync(
-            path.join(__dirname, `../../public/img/${img.file}`)
-          );
+          unlinkSync(path.join(__dirname, `../../public/img/${img.file}`));
         });
       }
 
@@ -133,5 +132,44 @@ module.exports = {
       sendJsonError(error, res);
     }
   },
-  destroy: async (req, res) => {},
+  destroy: async (req, res) => {
+    const { id } = req.params; /* product id */
+    try {
+      /*  await db.Image.destroy({ where: { productId: id } });
+      await db.Product.destroy({ where: { id } }); */
+      const options = {
+        include: [
+          {
+            association: "images",
+            attributes: {
+              exclude: ["createdAt", "updatedAt", "deletedAt"],
+            },
+          },
+          {
+            association: "category",
+            attributes: {
+              exclude: ["createdAt", "updatedAt", "deletedAt"],
+            },
+          },
+        ],
+      };
+      const product = await db.Product.findByPk(id, options);
+
+      product.images.forEach(async (img) => {
+        await img.destroy();
+        unlinkSync(
+          path.join(__dirname, `../../public/img/${img.file}`)
+        );
+      });
+      await product.destroy();
+
+      res.status(200).json({
+        ok: true,
+        status: 200,
+        msg: "Producto eliminado",
+      });
+    } catch (error) {
+      sendJsonError(error, res);
+    }
+  },
 };

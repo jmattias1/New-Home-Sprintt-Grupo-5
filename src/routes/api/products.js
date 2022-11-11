@@ -8,7 +8,7 @@ const { validatorAddProduct, validatorEditProduct } = require("../../validations
 /*/products */
 router
   .get("/all", all)
-  .put("/update/:id", validatorEditProduct, update)
+  .patch("/update/:id", validatorEditProduct, update)
   .post("/store/",uploadImageProduct.array("images"),validatorAddProduct,store)
   .delete("/destroy/:id", destroy);
 
