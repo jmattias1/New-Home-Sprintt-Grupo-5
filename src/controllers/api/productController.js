@@ -1,6 +1,9 @@
 const db = require("../../database/models");
 const {getUrl} = require("../../helpers/getUrl");
 const { sendJsonError } = require("../../helpers/sendJsonError");
+const { unlinkSync} = require("fs");
+const path = require('path')
+
 
 module.exports = {
   all: async (req, res) => {
