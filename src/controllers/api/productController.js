@@ -26,8 +26,7 @@ module.exports = {
         msg: error.messaje ? error.messaje : "comuniquese con el administrador",
       };
       return res.status(500).json(response);
-    }
-  },
+    }},
   update: async (req, res) => {},
   store: async (req, res) => {},
   destroy: async (req, res) => {},
