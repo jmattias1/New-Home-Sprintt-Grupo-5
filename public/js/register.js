@@ -45,7 +45,6 @@ $("name").addEventListener("focus", function ({ target }) {
 });
 
 $("surname").addEventListener("blur", function (e) {
-  {
     switch (true) {
       case !this.value.trim():
         msgError("errorSurname", "El Apellido es obligatorio", e);
@@ -64,7 +63,6 @@ $("surname").addEventListener("blur", function (e) {
         validField("errorSurname", e);
         break;
     }
-  }
 });
 
 $("surname").addEventListener("focus", function ({ target }) {
@@ -72,7 +70,6 @@ $("surname").addEventListener("focus", function ({ target }) {
 });
 
 $("email").addEventListener("blur", function (e) {
-  {
     switch (true) {
       case !this.value.trim():
         msgError("errorEmail", "El Email es obligatorio", e);
@@ -84,7 +81,6 @@ $("email").addEventListener("blur", function (e) {
         validField("errorEmail", e);
         break;
     }
-  }
 });
 
 $("email").addEventListener("focus", function ({ target }) {
@@ -92,7 +88,6 @@ $("email").addEventListener("focus", function ({ target }) {
 });
 
 $("password").addEventListener("blur", function (e) {
-    {
       switch (true) {
         case !this.value.trim():
           msgError("errorPassword", "La contraseña es obligatorio", e);
@@ -104,8 +99,7 @@ $("password").addEventListener("blur", function (e) {
           validField("errorPassword", e);
           break;
       }
-    }
-  });
+});
   
   $("password").addEventListener("focus", function ({ target }) {
     cleanField("errorPassword", target);

@@ -4,7 +4,7 @@ const fs = require('fs')
 
 
 module.exports = [
-  check("name")
+ /*  check("name")
     .notEmpty()
     .withMessage("Debe ingresar su Nombre")
     .bail()
@@ -14,7 +14,7 @@ module.exports = [
       min: 2,
       max: 25,
     })
-    .withMessage("Debe ingresar entre 2 y 25 caracteres"),
+    .withMessage("Debe ingresar entre 2 y 25 caracteres"), */
   check("surname")
     .notEmpty()
     .withMessage("Debe ingresar su Apellido")
