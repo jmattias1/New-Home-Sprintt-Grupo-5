@@ -19,8 +19,7 @@ const validField = (element, { target }) => {
   target.classList.add("is-valid");
 };
 
-$("name").addEventsListener("blur", function (e) {
-  {
+$("name").addEventListener("blur", function (e) {
     switch (true) {
       case !this.value.trim():
         msgError("errorName", "El nombre es obligatorio", e);
@@ -39,14 +38,13 @@ $("name").addEventsListener("blur", function (e) {
         validField("errorName", e);
         break;
     }
-  }
 });
 
-$("name").addEventsListener("focus", function ({ target }) {
+$("name").addEventListener("focus", function ({ target }) {
   cleanField("errorName", target);
 });
 
-$("surname").addEventsListener("blur", function (e) {
+$("surname").addEventListener("blur", function (e) {
   {
     switch (true) {
       case !this.value.trim():
@@ -69,11 +67,11 @@ $("surname").addEventsListener("blur", function (e) {
   }
 });
 
-$("surname").addEventsListener("focus", function ({ target }) {
+$("surname").addEventListener("focus", function ({ target }) {
   cleanField("errorSurname", target);
 });
 
-$("email").addEventsListener("blur", function (e) {
+$("email").addEventListener("blur", function (e) {
   {
     switch (true) {
       case !this.value.trim():
@@ -89,11 +87,11 @@ $("email").addEventsListener("blur", function (e) {
   }
 });
 
-$("email").addEventsListener("focus", function ({ target }) {
+$("email").addEventListener("focus", function ({ target }) {
   cleanField("errorEmail", target);
 });
 
-$("password").addEventsListener("blur", function (e) {
+$("password").addEventListener("blur", function (e) {
     {
       switch (true) {
         case !this.value.trim():
@@ -109,6 +107,6 @@ $("password").addEventsListener("blur", function (e) {
     }
   });
   
-  $("password").addEventsListener("focus", function ({ target }) {
+  $("password").addEventListener("focus", function ({ target }) {
     cleanField("errorPassword", target);
   });
