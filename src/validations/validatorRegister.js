@@ -8,7 +8,7 @@ module.exports = [
     .notEmpty()
     .withMessage("Debe ingresar su Nombre")
     .bail()
-    .isAlpha()
+    .isAlpha("en-US", { ignore: " " })
     .withMessage("El Nombre debe contener solo letras")
     .isLength({
       min: 2,
@@ -19,7 +19,7 @@ module.exports = [
     .notEmpty()
     .withMessage("Debe ingresar su Apellido")
     .bail()
-    .isAlpha()
+    .isAlpha("en-US", { ignore: " " })
     .withMessage("El Apellido debe contener solo letras")
     .isLength({
       min: 2,
@@ -46,7 +46,7 @@ module.exports = [
     })
     .withMessage("La contraseña debe contener entre 4 y 8 caracteres"),
 
-/*   check("country")
+  /*   check("country")
     .notEmpty()
     .withMessage("Debe rellenar con un pais")
     .isAlpha()
