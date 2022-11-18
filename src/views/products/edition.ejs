@@ -9,7 +9,7 @@
       <main class="main-edit">
         <section class="section-edit">
           <div class="son-edit">
-            <form action="/products/update/<%= product.id %>?_method=PUT" method="POST">
+            <form action="/products/update/<%= product.id %>?_method=PUT" method="POST" id="edition">
               <div class="form-edit">
                 <label for="name" class="form-label">PRODUCTO</label>
                 <input type="text" class="form-control <%= locals.errors && errors.name ? 'is-invalid' : null %>"
@@ -70,5 +70,7 @@
         </section>
       </main>
   </body>
+  <%- include('../partials/script') %>
+  <script src="/js/productsEdition.js"></script>
 
 </html>
