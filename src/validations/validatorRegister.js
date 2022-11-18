@@ -32,10 +32,7 @@ module.exports = [
     .bail()
     .isEmail()
     .withMessage("Debe ser un email válido")
-    .bail()
-
-    .withMessage("Este email ya se encuentra registrado"),
-
+    .bail(),
   check("password")
     .notEmpty()
     .withMessage("La contraseña es obligatoria")
