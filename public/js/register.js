@@ -1,6 +1,6 @@
 console.log('userRegister success!');
 
-const exRegAlfa = /^[a-zA-Z\s]+$/;
+const exRegAlfa = /^[A-Za-zÁÉÍÓÚáéíóúñÑ ]+$/
 const exRegEmail = /^[^@]+@[^@]+\.[a-zA-Z]{2,}$/;
 const exRegPassword =/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&]{6,15}/
 
