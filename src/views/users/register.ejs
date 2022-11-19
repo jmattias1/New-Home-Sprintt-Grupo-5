@@ -13,7 +13,7 @@
                         <input placeholder="Nombre" type="text" name="name" id="name"
                             value="<%= locals.old && old.name ? old.name : null %>"
                             class="form-control <%= locals.errors && errors.name ? 'is-invalid' : null %>">
-                        <p class="text-danger" id="errorName">
+                        <p id="errorName" class="text-danger">
                             <%= locals.errors && errors.name ? errors.name.msg : null %>
                         </p>
                     </div>
@@ -22,7 +22,7 @@
                         <input placeholder="Apellido" type="text" name="surname" id="surname"
                             value="<%= locals.old && old.surname ? old.surname : null %>"
                             class="form-control <%= locals.errors && errors.surname ? 'is-invalid' : null %>">
-                        <p class="text-danger" id="errorSurname">
+                        <p id="errorSurname" class="text-danger">
                             <%= locals.errors && errors.surname ? errors.surname.msg : null %>
                         </p>
                     </div>
@@ -31,7 +31,7 @@
                         <input placeholder="mi@gmail.com" type="text" name="email" id="email"
                             value="<%= locals.old && old.email ? old.email : null %>"
                             class="form-control <%= locals.errors && errors.email ? 'is-invalid' : null %>">
-                        <p class="text-danger" id="errorEmail">
+                        <p id="errorEmail" class="text-danger">
                             <%= locals.errors && errors.email ? errors.email.msg : null %>
                         </p>
                     </div>
@@ -40,7 +40,7 @@
                         <input placeholder="********" type="password" name="password" id="password"
                             value="<%= locals.old && old.password ? old.password : null %>"
                             class="form-control <%= locals.errors && errors.password ? 'is-invalid' : null %>">
-                        <p class="text-danger" id="errorPassword">
+                        <p id="errorPassword" class="text-danger">
                             <%= locals.errors && errors.password ? errors.password.msg : null %>
                         </p>
                     </div>
