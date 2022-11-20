@@ -1,1 +1,1 @@
-window.onload = function () {};
+console.log('succes login');

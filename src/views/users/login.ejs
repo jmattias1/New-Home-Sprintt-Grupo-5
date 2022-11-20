@@ -7,24 +7,34 @@
         <main class="main-form">
             <section class="section-form">
                 <h4>Ingresar</h4>
-                <form action="" method="POST">
+                <form action="" method="POST" class="needs-validation" novalidate autocomplete="off">
                     <div class="form-reg">
                         <label for="email">CORREO ELECTRONICO</label>
-                        <input placeholder="mi@gmail.com" type="text" name="email" id="email"
+                        <div class="has-validation">
+                            <input placeholder="mi@gmail.com" type="text" name="email" id="email"
                             value="<%= locals.old && old.email ? old.email : null %>"
-                            class="form-control <%= locals.errors && errors.email ? 'is-invalid' : null %>">
+                            class="form-control <%= locals.errors && errors.email ? 'is-invalid' : null %>" required>
                         <p class="text-danger">
                             <%= locals.errors && errors.email ? errors.email.msg : null %>
                         </p>
+                            <div class="invalid-feedback">
+                                Email es obligatorio
+                            </div>
+                        </div>
                     </div>
                     <div class="form-reg">
                         <label for="password">CONTRASEÑA</label>
-                        <input placeholder="********" type="password" name="password" id="password"
+                        <div class="has-validation">
+                            <input placeholder="********" type="password" name="password" id="password"
                             value="<%= locals.old && old.password ? old.password : null %>"
-                            class="form-control <%= locals.errors && errors.password ? 'is-invalid' : null %>">
+                            class="form-control <%= locals.errors && errors.password ? 'is-invalid' : null %>" required>
                         <p class="text-danger">
                             <%= locals.errors && errors.password ? errors.password.msg : null %>
                         </p>
+                        <div class="invalid-feedback">
+                            La contraseña es obligatorio
+                        </div>
+                        </div>
                     </div>
                     <div class="form-reg">
                         <button class="" type="submit">INGRESAR</button>
@@ -40,6 +50,7 @@
                 </form>
             </section>
         </main>
+        <%- include('../partials/scripts') %>
     <script src="/js/userLogin.js"></script>    
     </body>
 </html>

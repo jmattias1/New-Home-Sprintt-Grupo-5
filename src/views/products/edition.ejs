@@ -14,7 +14,7 @@
                 <label for="name" class="form-label">PRODUCTO</label>
                 <input type="text" class="form-control <%= locals.errors && errors.name ? 'is-invalid' : null %>"
                   id="name" name="name" value="<%= product.name %>">
-                <p class="text-danger">
+                <p id="errorName" class="text-danger">
                   <%= locals.errors && errors.name ? errors.name.msg : null %>
                 </p>
               </div>
@@ -22,7 +22,7 @@
                 <div class="form-edit-price">
                   <label for="price" class="form-label">PRECIO</label>
                   <input type="number" name="price" value="<%= product.price %>">
-                  <p class="text-danger">
+                  <p id="errorPrice" class="text-danger">
                     <%= locals.errors && errors.price ? errors.price.msg : null %>
                   </p>
                 </div>
@@ -70,7 +70,7 @@
         </section>
       </main>
   </body>
-  <%- include('../partials/script') %>
+  <%- include('../partials/scripts') %>
   <script src="/js/productsEdition.js"></script>
 
 </html>
