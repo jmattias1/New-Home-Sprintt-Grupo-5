@@ -11,13 +11,13 @@
 			<main class="main-edit">
 				<section class="section-edit">
 					<div class="son-edit">
-						<form action="/products/store" method="POST" enctype="multipart/form-data">
+						<form action="/products/store" method="POST" enctype="multipart/form-data" id="add">
 							<div class="form-edit">
 								<label for="name" class="form-label">NOMBRE DEL PRODUCTO</label>
 								<input type="text" placeholder="Teclado gamer HyperX Alloy"
 									class="form-control <%= locals.errors && errors.name ? 'is-invalid' : null %>"
 									id="name" name="name" value="<%= locals.old && old.name ? old.name : null %>">
-								<p class="text-danger">
+								<p id="errorName" class="text-danger">
 									<%= locals.errors && errors.name ? errors.name.msg : null %>
 								</p>
 							</div>
@@ -26,7 +26,7 @@
 									<label for="price" class="form-label">PRECIO</label>
 									<input type="number" placeholder="20.000" name="price"
 										value="<%= locals.old && old.price ? old.price : null %>">
-									<p class="text-danger">
+									<p id="errorPrice" class="text-danger">
 										<%= locals.errors && errors.price ? errors.price.msg : null %>
 									</p>
 								</div>
@@ -45,7 +45,7 @@
 											</option>
 											<% }) %>
 									</select>
-									<p class="text-danger">
+									<p id="categoryError" class="text-danger">
 										<%= locals.errors && errors.categoryId ? errors.categoryId.msg : null %>
 									</p>
 								</div>
@@ -58,7 +58,7 @@
 											</option>
 											<% }) %>
 									</select>
-									<p class="text-danger">
+									<p id="subCategoryError" class="text-danger">
 										<%= locals.errors && errors.subcategoryId ? errors.subcategoryId.msg : null %>
 									</p>
 								</div>
@@ -70,7 +70,7 @@
 									class="form-control <%= locals.errors && errors.description ? 'is-invalid' : null %>"
 									name="description" id="description" cols="30" rows="5" style="resize: none;"
 									value="<%= locals.old && old.name ? old.name : null %>"></textarea>
-								<p class="text-danger">
+								<p id="descriptionError" class="text-danger">
 									<%= locals.errors && errors.description ? errors.description.msg : null %>
 								</p>
 							</div>
@@ -80,12 +80,12 @@
 									for="image">Agregar
 									imagen</label>
 								<input hidden type="file" accept="image/*" name="images" id="image" multiple>
-								<p class="text-danger">
+								<p id="imageError" class="text-danger">
 									<%= locals.errors && errors.image ? errors.image.msg : null %>
 								</p>
 							</div>
 							<div class="form-text">
-								<button type="submit" class="button-guardar">GUARDAR CAMBIOS</button>
+								<button type="submit" class="button-guardar" id="btn-submit">GUARDAR CAMBIOS</button>
 							</div>
 						</form>
 					</div>
@@ -95,7 +95,11 @@
 
 			<!-- footer -->
 			<%- include('../partials/footer') %>
+			
 				<!-- /footer -->
+				<%- include('../partials/scripts') %>
+			<script src="/js/productsAdd.js"></script>
 	</body>
+	
 
 </html>

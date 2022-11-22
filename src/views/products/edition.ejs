@@ -21,7 +21,7 @@
               <div class="form-categories">
                 <div class="form-edit-price">
                   <label for="price" class="form-label">PRECIO</label>
-                  <input type="number" name="price" value="<%= product.price %>">
+                  <input  type="number" name="price" value="<%= product.price %>">
                   <p id="errorPrice" class="text-danger">
                     <%= locals.errors && errors.price ? errors.price.msg : null %>
                   </p>
@@ -29,6 +29,10 @@
                 <div class="form-edit-discount">
                   <label for="discount" class="form-label">DESCUENTO</label>
                   <input id="discount" type="number" name="discount" value="<%= product.discount %>">
+                </div>
+                <div class="form-edit-finalPrice">
+                  <label for="finalPrice" class="form-label">PRECIO FINAL</label>
+                  <input id="finalPrice" type="number" name="finalPrice">
                 </div>
 
                 <div class="form-edit-category">
@@ -39,7 +43,7 @@
                       </option>
                       <% }) %>
                   </select>
-                  </p>
+                  <p id="categoryError"></p>
                 </div>
                 <div class="form-edit-subcategory">
                   <label for="category" class="form-label">SUB CATEGORIA</label>
@@ -49,6 +53,7 @@
                       </option>
                       <% }) %>
                   </select>
+                  <p id="subCategoryError"></p>
                 </div>
               </div>
 
@@ -57,7 +62,8 @@
                 <textarea class="form-control <%= locals.errors && errors.description ? 'is-invalid' : null %>"
                   name="description" id="description" cols="30" rows="5"
                   style="resize: none;">  <%= product.description %></textarea>
-                <p class="text-danger">
+                  <p id="descriptionInfo" hidden><span id="numberCharacters"></span> disponibles</p>
+                <p id="descriptionError" class="text-danger">
                   <%= locals.errors && errors.description ? errors.description.msg : null %>
                 </p>
               </div>
@@ -69,8 +75,9 @@
           </div>
         </section>
       </main>
+      <%- include('../partials/scripts') %>
+      <script src="/js/productsEdition.js"></script>
   </body>
-  <%- include('../partials/scripts') %>
-  <script src="/js/productsEdition.js"></script>
+ 
 
 </html>

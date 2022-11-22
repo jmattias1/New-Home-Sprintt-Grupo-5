@@ -1,7 +1,7 @@
-console.log('product succes');
+console.log('succes productAdd');
 
-const edition = $('edition')
-const elements = edition.elements
+const add = $('add')
+const elements = add.elements
 let totalCharacteres = 200;
 let numberCharacteres = 200;
 
@@ -163,4 +163,14 @@ $('description').addEventListener("keyup", function (e){
         $('descriptionInfo').hidden = false
         cleanError('descriptionError',e)
     }
+})
+
+$('images').addEventListener("change", (e) =>{
+    let reader = new FileReader()
+    reader.readAsDataURL(e.target.files[0])
+    reader.onload = () => {
+        $('imagePrev').src = reader.result
+    }
+
+    checkFields()
 })
