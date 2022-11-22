@@ -19,54 +19,74 @@
                 </p>
               </div>
               <div class="form-categories">
-                <div class="form-edit-price">
-                  <label for="price" class="form-label">PRECIO</label>
-                  <input  type="number" name="price" value="<%= product.price %>">
-                  <p id="errorPrice" class="text-danger">
-                    <%= locals.errors && errors.price ? errors.price.msg : null %>
-                  </p>
-                </div>
-                <div class="form-edit-discount">
-                  <label for="discount" class="form-label">DESCUENTO</label>
-                  <input id="discount" type="number" name="discount" value="<%= product.discount %>">
-                </div>
-                <div class="form-edit-finalPrice">
-                  <label for="finalPrice" class="form-label">PRECIO FINAL</label>
-                  <input id="finalPrice" type="number" name="finalPrice">
-                </div>
+								<div class="form-edit">
+									<label for="price" class="form-label">PRECIO</label>
+									<input type="number" placeholder="20.000" name="price"
+										class="form-control <%= locals.errors && errors.name ? 'is-invalid' : null %>"
+										id="price" value="<%= locals.old && old.price ? old.price : null %>">
+										<p id="errorPrice" class="text-danger">
+											<%= locals.errors && errors.price ? errors.price.msg : null %>
+										</p>
+								</div>
 
-                <div class="form-edit-category">
-                  <label for="category" class="form-label">CATEGORIA</label>
-                  <select name="categoryId" id="category" class="form-input">
-                    <% categories.forEach(({id, name})=> { %>
-                      <option value="<%= id %>" <%=id===product.categoryId && 'selected' %>><%= name %>
-                      </option>
-                      <% }) %>
-                  </select>
-                  <p id="categoryError"></p>
-                </div>
-                <div class="form-edit-subcategory">
-                  <label for="category" class="form-label">SUB CATEGORIA</label>
-                  <select name="subcategoryId" id="category" class="form-input">
-                    <% subcategories.forEach(({id, name})=> { %>
-                      <option value="<%= id %>" <%=id===product.subcategoryId && 'selected' %>><%= name %>
-                      </option>
-                      <% }) %>
-                  </select>
-                  <p id="subCategoryError"></p>
-                </div>
-              </div>
+								<!-- <div class="form-edit-price">
+									<label for="price" class="form-label">PRECIO</label>
+									<input type="number" placeholder="20.000" name="price"
+										value="<%= locals.old && old.price ? old.price : null %>">
+									<p id="errorPrice" class="text-danger">
+										<%= locals.errors && errors.price ? errors.price.msg : null %>
+									</p>
+								</div> -->
+								<div class="form-edit-discount">
+									<label for="discount" class="form-label">DESCUENTO</label>
+									<input id="discount" placeholder="15" type="number" name="discount"
+										value="<%= locals.old && old.discount ? old.discount : null %>">
+								</div>
+								<div class="form-edit-finalPrice">
+									<label for="finalPrice" class="form-label">PRECIO FINAL</label>
+									<input id="finalPrice" type="number" name="finalPrice">
+								  </div>
 
-              <div class="form-edit-description">
-                <label for="description" class="form-label">DESCRIPCIÓN</label>
-                <textarea class="form-control <%= locals.errors && errors.description ? 'is-invalid' : null %>"
-                  name="description" id="description" cols="30" rows="5"
-                  style="resize: none;">  <%= product.description %></textarea>
-                  <p id="descriptionInfo" hidden><span id="numberCharacters"></span> disponibles</p>
-                <p id="descriptionError" class="text-danger">
-                  <%= locals.errors && errors.description ? errors.description.msg : null %>
-                </p>
-              </div>
+								<div class="form-edit-category">
+									<label for="category" class="form-label">CATEGORIA</label>
+									<select name="categoryId" id="category" class="form-input">
+										<% categories.forEach(({id, name})=> { %>
+											<option value="<%= id %>">
+												<%=name %>
+											</option>
+											<% }) %>
+									</select>
+									<p id="categoryError" class="text-danger">
+										<%= locals.errors && errors.categoryId ? errors.categoryId.msg : null %>
+									</p>
+								</div>
+								<div class="form-edit-subcategory">
+									<label for="category" class="form-label">SUB CATEGORIA</label>
+									<select name="subcategoryId" id="category" class="form-input">
+										<% subcategories.forEach(({id, name})=> { %>
+											<option value="<%= id %>">
+												<%= name %>
+											</option>
+											<% }) %>
+									</select>
+									<p id="subCategoryError" class="text-danger">
+										<%= locals.errors && errors.subcategoryId ? errors.subcategoryId.msg : null %>
+									</p>
+								</div>
+							</div>
+
+
+							<div class="form-edit-description">
+								<label for="description" class="form-label">DESCRIPCIÓN</label>
+								<textarea class="form-control <%= locals.errors && errors.description ? 'is-invalid' : null %>"
+								  name="description" id="description" cols="30" rows="5"
+								  style="resize: none;"></textarea>
+								  <p id="descriptionInfo" hidden><span id="numberCharacters"></span> disponibles</p>
+								<p id="descriptionError" class="text-danger">
+								  <%= locals.errors && errors.description ? errors.description.msg : null %>
+								</p>
+
+                           </div>
               <div class="form-text">
                 <button type="submit" class="button-guardar">GUARDAR CAMBIOS</button>
                 <button class="button-cancelar"><a href="/products/detail/<%= product.id ? product.id : id %>">CANCELAR</a></button>

@@ -22,19 +22,33 @@
 								</p>
 							</div>
 							<div class="form-categories">
-								<div class="form-edit-price">
+								<div class="form-edit">
+									<label for="price" class="form-label">PRECIO</label>
+									<input type="number" placeholder="20.000" name="price"
+										class="form-control <%= locals.errors && errors.name ? 'is-invalid' : null %>"
+										id="price" value="<%= locals.old && old.price ? old.price : null %>">
+										<p id="errorPrice" class="text-danger">
+											<%= locals.errors && errors.price ? errors.price.msg : null %>
+										</p>
+								</div>
+
+								<!-- <div class="form-edit-price">
 									<label for="price" class="form-label">PRECIO</label>
 									<input type="number" placeholder="20.000" name="price"
 										value="<%= locals.old && old.price ? old.price : null %>">
 									<p id="errorPrice" class="text-danger">
 										<%= locals.errors && errors.price ? errors.price.msg : null %>
 									</p>
-								</div>
+								</div> -->
 								<div class="form-edit-discount">
 									<label for="discount" class="form-label">DESCUENTO</label>
 									<input id="discount" placeholder="15" type="number" name="discount"
 										value="<%= locals.old && old.discount ? old.discount : null %>">
 								</div>
+								<div class="form-edit-finalPrice">
+									<label for="finalPrice" class="form-label">PRECIO FINAL</label>
+									<input id="finalPrice" type="number" name="finalPrice">
+								  </div>
 
 								<div class="form-edit-category">
 									<label for="category" class="form-label">CATEGORIA</label>
@@ -64,16 +78,18 @@
 								</div>
 							</div>
 
+
 							<div class="form-edit-description">
-								<label for="description" class="form-label">DESCRIPCIÓN DEL PRODUCTO</label>
-								<textarea
-									class="form-control <%= locals.errors && errors.description ? 'is-invalid' : null %>"
-									name="description" id="description" cols="30" rows="5" style="resize: none;"
-									value="<%= locals.old && old.name ? old.name : null %>"></textarea>
+								<label for="description" class="form-label">DESCRIPCIÓN</label>
+								<textarea class="form-control <%= locals.errors && errors.description ? 'is-invalid' : null %>"
+								  name="description" id="description" cols="30" rows="5"
+								  style="resize: none;"></textarea>
+								  <p id="descriptionInfo" hidden><span id="numberCharacters"></span> disponibles</p>
 								<p id="descriptionError" class="text-danger">
-									<%= locals.errors && errors.description ? errors.description.msg : null %>
+								  <%= locals.errors && errors.description ? errors.description.msg : null %>
 								</p>
-							</div>
+
+                           </div>
 							<div class="form-edit">
 								<label
 									class="btn btn-secondary <%= locals.errors && errors.image ? 'btn-danger' : null %>"

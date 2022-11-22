@@ -2,8 +2,8 @@ console.log('succes productAdd');
 
 const add = $('add')
 const elements = add.elements
-let totalCharacteres = 200;
-let numberCharacteres = 200;
+let totalCharacters = 200;
+let numberCharacters = 200;
 
 const msgError = (element, msg, event) => {
     $(element).style.color = 'red'
@@ -125,7 +125,7 @@ $('subcategoryId').addEventListener("blur", function (e){
 
 $('description').addEventListener("focus", function (e){
     $('descriptionInfo').hidden = false
-    $('numberCharacteres').innerHTML = numberCharacteres
+    $('numberCharacters').innerHTML = numberCharacters
 
     cleanError('descriptionError',e)
 })
@@ -152,9 +152,9 @@ $('description').addEventListener("blur", function (e){
 })
 
 $('description').addEventListener("keyup", function (e){
-    numberCharacteres = totalCharacteres - +this.value.length
+    numberCharacters = totalCharacters - +this.value.length
 
-    $('numberCharacteres').innerHTML = numberCharacteres
+    $('numberCharacters').innerHTML = numberCharacters
 
     if (numberCharacteres <= 0) {
         $('descriptionInfo').hidden = true
