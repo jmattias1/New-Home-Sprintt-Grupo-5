@@ -97,6 +97,25 @@ $('discount').addEventListener("keyup", function (e){
     $('finalPrice').value = +price - (+price * +discount / 100)
 })
 
+$("Discount").addEventListener("blur", function (e){
+    switch (true) {
+        case !this.value.trim():
+            msgError('errorDiscount', 'El descuento es requerido', e)
+            break;
+        case this.value < 0 :
+            msgError('errorDiscount', 'No puede ser un numero negativo',e)
+  
+    break;
+        default:
+            validField('errorDiscount',e)
+            break;
+    }
+    
+    checkFields()
+  
+  })
+  
+
 $('categoryId').addEventListener("blur", function (e){
     switch (true) {
         case !this.value:

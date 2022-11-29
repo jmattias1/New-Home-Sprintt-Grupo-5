@@ -104,3 +104,52 @@ $("password").addEventListener("blur", function (e) {
   $("password").addEventListener("focus", function ({ target }) {
     cleanField("errorPassword", target);
   });
+
+  $("province").addEventListener("blur", function (e) {
+    switch (true) {
+      case !this.value.trim():
+        msgError("errorProvince", "La provincia es obligatorio", e);
+        break;
+      default:
+        validField("errorProvince", e);
+        break;
+    }
+});
+
+$("province").addEventListener("focus", function ({ target }) {
+  cleanField("errorProvince", target);
+});
+
+
+$("country").addEventListener("blur", function (e) {
+  switch (true) {
+    case !this.value.trim():
+      msgError("errorCountry", "El pais es obligatorio", e);
+      break;
+    default:
+      validField("errorCountry", e);
+      break;
+  }
+});
+
+$("country").addEventListener("focus", function ({ target }) {
+cleanField("errorCountry", target);
+});
+
+$("city").addEventListener("blur", function (e) {
+  switch (true) {
+    case !this.value.trim():
+      msgError("errorCity", "La ciudad es obligatorio", e);
+      break;
+    default:
+      validField("errorCity", e);
+      break;
+  }
+});
+
+$("city").addEventListener("focus", function ({ target }) {
+cleanField("errorCity", target);
+});
+
+
+
