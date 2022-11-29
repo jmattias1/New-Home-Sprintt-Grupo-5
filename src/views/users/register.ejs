@@ -53,7 +53,7 @@
                                 </option>
                                 <% }) %>
                         </select>
-
+                       <p id="errorCountry"></p>
                     </div>
                     <div class="form-province">
                         <label for="province">PROVINCIA</label>
@@ -64,13 +64,14 @@
                                 </option>
                                 <% }) %>
                         </select>
+                        <p id="errorProvince"></p>
                     </div>
                     <div class="form-reg">
                         <label for="city">CIUDAD</label>
                         <input placeholder="Escobar" type="text" name="city" id="city"
                             value="<%= locals.old && old.city ? old.city : null %>"
                             class="form-control <%= locals.errors && errors.city ? 'is-invalid' : null %>">
-                        <p class="text-danger">
+                        <p id="errorCity" class="text-danger">
                             <%= locals.errors && errors.city ? errors.city.msg : null %>
                         </p>
                     </div>
