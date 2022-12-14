@@ -29,5 +29,8 @@
     "sequelize": "^6.23.2",
     "session": "^0.1.0",
     "uuid": "^9.0.0"
+  },
+  "devDependencies": {
+    "concurrently": "^7.6.0"
   }
 }
