@@ -3,8 +3,8 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "client:start" :  "cd admin && npm start",
-    "dev": "concurrently \"npm run server\" \"npm run client:start\"", 
+    "client:start": "cd admin && npm start",
+    "dev": "concurrently \"npm run server\" \"npm run client:start\"",
     "server": "nodemon ./src/bin/www",
     "create:db": "sequelize db:create && sequelize db:migrate && sequelize db:seed:all",
     "reset:db": "sequelize db:drop && npm run create:db",
@@ -13,6 +13,7 @@
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "cookie-parser": "~1.4.4",
+    "cors": "^2.8.5",
     "debug": "~2.6.9",
     "dotenv": "^16.0.2",
     "ejs": "~2.6.1",

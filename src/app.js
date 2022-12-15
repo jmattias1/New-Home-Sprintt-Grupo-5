@@ -6,6 +6,7 @@ let path = require("path");
 let cookieParser = require("cookie-parser");
 let logger = require("morgan");
 const methodOverride = require("method-override");
+const cors = require('cors')
 
 const localsUserCheck = require("./middlewares/localsUserCheck");
 const cookieCheck = require("./middlewares/cookieCheck");
@@ -23,9 +24,10 @@ let usersRouterApi = require('./routes/api/users');
 let app = express();
 
 // view engine setup
+
 app.set("views", path.join(__dirname, "/views"));
 app.set("view engine", "ejs");
-
+app.use(cors());
 app.use(methodOverride("_method"));
 app.use(logger("dev"));
 app.use(express.json());
