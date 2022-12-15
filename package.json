@@ -3,7 +3,9 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "nodemon ./src/bin/www",
+    "client:start" :  "cd admin && npm start",
+    "dev": "concurrently \"npm run server\" \"npm run client:start\"", 
+    "server": "nodemon ./src/bin/www",
     "create:db": "sequelize db:create && sequelize db:migrate && sequelize db:seed:all",
     "reset:db": "sequelize db:drop && npm run create:db",
     "dev:reset": "npm run reset:db && nodemon ./bin/www"
