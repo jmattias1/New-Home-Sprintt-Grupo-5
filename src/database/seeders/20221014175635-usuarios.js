@@ -1,4 +1,3 @@
-"use strict";
 const { hashSync } = require("bcryptjs");
 const usersDB = require("../../data/usersDB.json");
 const users = usersDB.map((user) => {

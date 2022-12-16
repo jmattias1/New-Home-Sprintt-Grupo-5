@@ -1,4 +1,3 @@
-"use strict";
 const countriesDB = require("../../data/countries.json");
 const countries = countriesDB.map((product) => {
   return {

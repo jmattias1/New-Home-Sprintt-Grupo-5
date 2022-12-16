@@ -8,6 +8,9 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER,
       },
+      quantity: {
+        type: Sequelize.INTEGER,
+      },
       orderId: {
         type: Sequelize.INTEGER,
         references: {
@@ -16,6 +19,7 @@ module.exports = {
           },
           key: "id",
         },
+        onDelete : 'cascade'
       },
       productId: {
         type: Sequelize.INTEGER,

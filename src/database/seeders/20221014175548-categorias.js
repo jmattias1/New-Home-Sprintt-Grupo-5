@@ -1,4 +1,3 @@
-"use strict";
 const categoryDB = require("../../data/category.json");
 const categories = categoryDB.map((category) => {
   return {

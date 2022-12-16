@@ -1,4 +1,3 @@
-"use strict";
 const addressDB = require("../../data/address.json");
 const address = addressDB.map((address) => {
   return {

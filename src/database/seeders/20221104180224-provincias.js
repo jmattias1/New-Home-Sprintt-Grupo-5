@@ -1,4 +1,3 @@
-"use strict";
 const provincesDB = require("../../data/provinces.json");
 const provinces = provincesDB.map((province) => {
   return {
