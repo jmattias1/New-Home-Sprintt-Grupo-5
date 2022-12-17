@@ -4,8 +4,7 @@ const db = require("../database/models");
 
 module.exports = {
   edit: (req, res) => {
-    db.User.findByPk(req.params.id)
-    .then(user => {
+    db.User.findByPk(req.params.id).then((user) => {
       return res.render("users/edit", {
         user,
         title: "Editar usuario",
@@ -13,36 +12,34 @@ module.exports = {
     });
   },
   update: (req, res) => {
-    const {name,surname,email,password} = req.body;
-    const errors = validationResult(req)
+    const { name, surname, email, password } = req.body;
+    const errors = validationResult(req);
     if (errors.isEmpty()) {
-    db.User.update(
-      {
-        name: name?.trim(),
-        surname: surname?.trim(),
-        email: email?.trim(),
-        password:bcryptjs.hashSync(password, 10),
-      },
-      {
-        where: {
-          id: req.params.id,
+      db.User.update(
+        {
+          name: name?.trim(),
+          surname: surname?.trim(),
+          email: email?.trim(),
+          password: bcryptjs.hashSync(password, 10),
         },
-      }
-    )
-      .then(() => res.redirect("/"))
-      .catch((error) => console.log(error));  
-    }else{
-      db.User.findByPk(req.params.id)
-      .then(user => {
-        return res.render('users/edit',{
+        {
+          where: {
+            id: req.params.id,
+          },
+        }
+      )
+        .then(() => res.redirect("/"))
+        .catch((error) => console.log(error));
+    } else {
+      db.User.findByPk(req.params.id).then((user) => {
+        return res.render("users/edit", {
           user,
-          old :req.body,
+          old: req.body,
           errors: errors.mapped(),
-          title : "Editar usuario"
-        })
-      })
+          title: "Editar usuario",
+        });
+      });
     }
-    
   },
   register: (req, res) => {
     let countries = db.Country.findAll({
@@ -158,7 +155,49 @@ module.exports = {
           });
         }
         res.locals.user = req.session.userLogin;
-        return res.redirect("/");
+        db.Order.findOne({
+          where: {
+            userId: req.session.userLogin.id,
+            statusId: 1,
+          },
+          include: [
+            {
+              association: "carts",
+              attributes: ["id", "quantity"],
+              include: [
+                {
+                  association: "product",
+                  attributes: ["id", "name", "price", "discount"],
+                  include: ["images"],
+                },
+              ],
+            },
+          ],
+        })
+          .then((order) => {
+            if (order) {
+              req.session.orderCart = {
+                id: order.id,
+                total: order.total,
+                items: order.carts,
+              };
+            } else {
+              db.Order.create({
+                date: new Date(),
+                total: 0,
+                userId: req.session.userLogin.id,
+                statusId: 1,
+              }).then((order) => {
+                req.session.orderCart = {
+                  id: order.id,
+                  total: order.total,
+                  items: [],
+                };
+              });
+            }
+            return res.redirect("/");
+          })
+          .catch((error) => console.log(error));
       });
     } else {
       const { email } = req.body;
