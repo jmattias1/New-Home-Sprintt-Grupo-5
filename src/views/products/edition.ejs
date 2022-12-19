@@ -19,7 +19,7 @@
                 </p>
               </div>
               <div class="form-categories">
-								<div class="form-edit">
+<!-- 								<div class="form-edit">
 									<label for="price" class="form-label">PRECIO</label>
 									<input type="number" placeholder="20.000" name="price"
 										class="form-control <%= locals.errors && errors.name ? 'is-invalid' : null %>"
@@ -27,25 +27,25 @@
 										<p id="errorPrice" class="text-danger">
 											<%= locals.errors && errors.price ? errors.price.msg : null %>
 										</p>
-								</div>
+								</div> -->
 
-								<!-- <div class="form-edit-price">
+								<div class="form-edit-price">
 									<label for="price" class="form-label">PRECIO</label>
 									<input type="number" placeholder="20.000" name="price"
 										value="<%= locals.old && old.price ? old.price : null %>">
 									<p id="errorPrice" class="text-danger">
 										<%= locals.errors && errors.price ? errors.price.msg : null %>
 									</p>
-								</div> -->
+								</div> 
 								<div class="form-edit-discount">
 									<label for="discount" class="form-label">DESCUENTO</label>
 									<input id="discount" placeholder="15" type="number" name="discount"
 										value="<%= locals.old && old.discount ? old.discount : null %>">
 								</div>
-								<div class="form-edit-finalPrice">
+<!-- 								<div class="form-edit-finalPrice">
 									<label for="finalPrice" class="form-label">PRECIO FINAL</label>
 									<input id="finalPrice" type="number" name="finalPrice">
-								  </div>
+								  </div> -->
 
 								<div class="form-edit-category">
 									<label for="category" class="form-label">CATEGORIA</label>
@@ -96,8 +96,8 @@
         </section>
       </main>
       <%- include('../partials/scripts') %>
-      <script src="/js/productsEdition.js"></script>
-  </body>
+       <script src="/js/productsEdition.js"></script>
+   </body>
  
 
 </html>

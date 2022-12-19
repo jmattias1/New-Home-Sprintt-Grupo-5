@@ -51,7 +51,7 @@
                             <div class="buttons">
                                 <% if (locals.userLogin && userLogin.rol===2) { %>
                                     <a href="#" class="buttons-comprar">Comprar</a>
-                                    <a href="#" class="buttons-agregar">Agregar al carrito</a>
+                                    <button href="#" class="buttons-agregar"  onclick="addCartItem('<%= product.id %> ')">Agregar al carrito</button>
                                     <% } %>
 
                                         <% if (!locals.userLogin) { %>
@@ -123,6 +123,7 @@
 
             <!-- FOOTER -->
             <%- include('../partials/footer') %>
+            <%- include('../partials/scripts') %>
 
     </body>
 
