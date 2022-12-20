@@ -26,6 +26,7 @@ const showCart = (items) => {
         $('box-cart').innerHTML += `<p class="alert alert-warning">Aún no has agregado productos al carrito</p>`
     }
 }
+
  
 
 $('btn-cart') && $('btn-cart').addEventListener('click', async () => {
