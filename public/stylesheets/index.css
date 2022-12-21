@@ -25,9 +25,11 @@
     font-family: 'Archivo Black', sans-serif;
     color: #ffffff;
 }
-.category-index{
+
+.category-index {
     cursor: pointer;
 }
+
 #menu {
     position: fixed;
     width: 150px;
@@ -302,6 +304,11 @@
     .main__section__logo {
         margin-left: 40%;
         width: 20%;
+    }
+
+    .interesting_products {
+        margin: 2%;
+        width: 45%;
     }
 
 
