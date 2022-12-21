@@ -44,7 +44,7 @@ module.exports = [
       min: 8,
       max: 15,
     })
-    .withMessage("La contraseña debe contener entre 4 y 8 caracteres"),
+    .withMessage("La contraseña debe contener entre 8 y 15 caracteres"),
 
 /*   check("country")
     .notEmpty()
