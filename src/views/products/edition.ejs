@@ -32,7 +32,7 @@
 								<div class="form-edit-price">
 									<label for="price" class="form-label">PRECIO</label>
 									<input type="number" placeholder="20.000" name="price"
-										value="<%= locals.old && old.price ? old.price : null %>">
+										value="<%= product.price %>">
 									<p id="errorPrice" class="text-danger">
 										<%= locals.errors && errors.price ? errors.price.msg : null %>
 									</p>
@@ -40,7 +40,7 @@
 								<div class="form-edit-discount">
 									<label for="discount" class="form-label">DESCUENTO</label>
 									<input id="discount" placeholder="15" type="number" name="discount"
-										value="<%= locals.old && old.discount ? old.discount : null %>">
+										value="<%= product.discount %>">
 								</div>
 <!-- 								<div class="form-edit-finalPrice">
 									<label for="finalPrice" class="form-label">PRECIO FINAL</label>
@@ -98,6 +98,4 @@
       <%- include('../partials/scripts') %>
        <script src="/js/productsEdition.js"></script>
    </body>
- 
-
 </html>
