@@ -29,7 +29,8 @@
 
 .section-pro img {
     margin-top: 1%;
-    width: 40%;
+    border-radius:50%;
+    width: 30%;
 
 }
 
