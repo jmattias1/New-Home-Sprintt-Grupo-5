@@ -73,10 +73,12 @@
     font-size: 13px;
     margin-left: 10%;
 }
-.form-country select{
+
+.form-country select {
     margin-left: 10%;
     width: 80%;
 }
+
 .form-province {
     display: flex;
     flex-direction: column;

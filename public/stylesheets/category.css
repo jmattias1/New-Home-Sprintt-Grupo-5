@@ -80,13 +80,14 @@
     height: 40px;
 }
 
-.msj-category{
-        display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
+.msj-category {
+    display: flex;
+    flex-direction: column;
+
 }
-.msj-category p{
+
+.msj-category p {
+    padding-left: 3%;
     font-size: 20px;
     color: red;
 }

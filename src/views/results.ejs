@@ -18,7 +18,7 @@
 				</ul>
 			</div>
 			<main class="interesting_products">
-			<% if (products.length> 0) { %>
+				<% if (products.length> 0) { %>
 					<section class="main__section">
 						<section class="interesting_products">
 							<h3>Tus resultados de <%= keywords %> son: </h3>
@@ -46,9 +46,10 @@
 							<div class="msj-category">
 								<p>No se encontraron resultados de <%= keywords %>
 								</p>
+								<h4 style="font-family: 'roboto'; margin: 4% 0% 0% 2%;">Productos que te pueden llegar a
+									interesar</h4>
 							</div>
-							<h4 style="font-family: 'roboto'; margin-left : 2%;">Productos que te pueden llegar a
-								interesar</h4>
+
 							<div class="containsproduct">
 								<% offer.forEach(({id,name, images,discount,price})=> { %>
 									<article>
