@@ -38,7 +38,7 @@ module.exports = [
     .bail()
     .isLength({
       min: 4,
-      max: 8,
+      max: 15,
     })
-    .withMessage("La contraseña debe contener entre 4 y 8 caracteres"),
+    .withMessage("La contraseña debe contener entre 4 y 15 caracteres"),
 ];
