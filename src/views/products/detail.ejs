@@ -50,8 +50,8 @@
                             </div>
                             <div class="buttons">
                                 <% if (locals.userLogin && userLogin.rol===2) { %>
-                                    <a href="#" class="buttons-comprar">Comprar</a>
-                                    <a href="#" class="buttons-agregar">Agregar al carrito</a>
+                                    <a href="#" onclick="event.preventDefault(); addCartItem('<%=product.id%>') " class="buttons-comprar" data-bs-toggle="modal" data-bs-target="#cartModal">Comprar</a>
+                                    <a href="#" onclick="event.preventDefault(); addCartItem('<%=product.id%>')" class="buttons-agregar">Agregar al carrito</a>
 
                                     <!--                                     <button  class="buttons-agregar"  onclick="addCartItem('<%=product.id%>')">Agregar al carrito</button>
  -->
@@ -59,7 +59,7 @@
 
                                         <% if (!locals.userLogin) { %>
                                             <a href="/users/login" class="buttons-comprar">Comprar</a>
-                                            <a href="/users/login" class="buttons-agregar">Agregar al carrito</a>
+                                            <a href="#" onclick="event.preventDefault(); addCartItem('<%=product.id%>')" class="buttons-agregar">Agregar al carrito</a>
                                             <% } %>
                             </div>
                             <div class="button-admin">
