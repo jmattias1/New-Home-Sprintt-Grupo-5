@@ -1,13 +1,12 @@
-import React,{useState} from 'react'
-import { useEffect } from 'react';
-import { useFetcher } from 'react-router-dom';
-import Metric from './Metric';
+import React, { useEffect, useState } from "react";
+import  {UseFetch} from "../../hooks/UseFetch";
+import  Metric  from "./Metric";
 
-const Metrics = () => {
-  const [state, setstate] = useState({
+export const Metrics = () => {
+  const [state, setState] = useState({
     products: {
       title: "Total Productos",
-      icon: "fa-box archive",
+      icon: "fa-boxes",
       value: 0,
       color: "primary",
     },
@@ -24,34 +23,33 @@ const Metrics = () => {
       color: "warning",
     },
   });
+
   useEffect(() => {
-    
-    useFetch('/totals')
-    .then(({data})=> {
-      setstate({
-        products : {
-          ...state.products,
-          value : data.totalProducts
-        },
-        users : {
-          ...state.users,
-          value : data.totalUsers
-        },
-        categories : {
-          ...state.categories,
-          value : data.totalCategories
-        }
+    UseFetch("/totals")
+      .then(({ data }) => {
+        setState({
+          products: {
+            ...state.products,
+            value: data.totalProducts,
+          },
+          users: {
+            ...state.users,
+            value: data.totalUsers,
+          },
+          categories: {
+            ...state.categories,
+            value: data.totalCategories,
+          },
+        });
       })
-    })
+      .catch((error) => console.error);
   }, []);
 
   return (
-    <div class="row">
+    <div className="row">
       <Metric {...state.products} />
       <Metric {...state.users} />
       <Metric {...state.categories} />
     </div>
   );
-}
-
-export default Metrics
+};

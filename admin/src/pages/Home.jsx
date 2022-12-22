@@ -1,5 +1,5 @@
 import React from 'react'
-import Metrics from '../components/metricas/Metrics'
+import {Metrics} from '../components/metricas/Metrics'
 
 const Home = () => {
   return (
