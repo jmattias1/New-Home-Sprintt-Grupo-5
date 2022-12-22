@@ -1,17 +1,18 @@
-.cart-pag{
+.cart-pag {
     margin: 80px auto;
 }
-table{
+
+table {
     width: 100%;
     border-collapse: collapse;
 }
 
-.cart-info{
+.cart-info {
     display: flex;
     flex-wrap: wrap;
 }
 
-th{
+th {
     text-align: left;
     padding: 5px;
     color: #fff;
@@ -19,41 +20,58 @@ th{
     font-weight: normal;
 }
 
-td{
+td {
     padding: 10px 5px;
 }
 
-td input{
+td input {
     width: 40px;
     height: 30px;
     padding: 5px;
 }
 
-td a{
+td a {
     color: red;
     font-size: 12px;
 }
 
-td img{
-    width:  80px;
+td img {
+    width: 80px;
     height: 80px;
     margin-right: 10px;
 }
 
-.precio-total{
+.precio-total {
     display: flex;
     justify-content: flex-end;
 }
 
-.precio-total table{
+.precio-total table {
     border-top: 3px solid black;
     width: 100%;
     max-width: 565px;
 }
 
-td:last-child{
+td:last-child {
     text-align: right;
 }
-th:last-child{
+
+th:last-child {
     text-align: right;
+}
+
+.modal-content {}
+
+.modal-header {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(125, 255, 125);
+}
+
+#cartModalLabel {
+    font-size: 20px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    
 }
