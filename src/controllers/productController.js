@@ -151,8 +151,10 @@ controller = {
   }
 },
   cart: (req, res) => {
+
     return res.render("products/cart", {
       title: "Carrito",
+      items : req.session.orderCart.items || []
     });
   },
   remove: (req, res) => {
