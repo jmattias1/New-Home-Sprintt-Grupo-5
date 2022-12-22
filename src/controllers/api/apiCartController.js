@@ -141,5 +141,34 @@ module.exports = {
       });
     }
   },
-  removeAllItem: async (req, res) => {},
+  removeAllItem: async (req, res) => {
+    try {
+      const { id } = req.params;
+
+        await db.Cart.destroy({
+          where: {
+            id,
+          },
+        });
+
+        const itemsModify = req.session.orderCart.items.filter(
+          (element) => element.id !== +id
+        );
+
+        req.session.orderCart = {
+          ...req.session.orderCart,
+          items: itemsModify,
+        };
+
+      return res.status(200).json({
+        ok: true,
+        data: req.session.orderCart || null,
+      });
+    } catch (error) {
+      return res.status(error.status || 500).json({
+        ok: false,
+        msg: error.message || "Upps, un error!",
+      });
+    }
+  },
 };

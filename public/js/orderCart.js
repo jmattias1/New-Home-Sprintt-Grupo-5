@@ -1,12 +1,14 @@
 console.log('orderCart success!');
 
 const showCart = (items) => {
+    $('cart-items').innerHTML = null;
     if(items.length) {
-        $('cart-items').innerHTML = null;
-        items.forEach(({quantity, product}) => {
+        $('msgEmpty').hidden = true;
+
+        items.forEach(({quantity, product,id}) => {
             $('cart-items').innerHTML += ` 
         <tr>
-            <td><img style="width: 100px" src="/images/products/${product.images[0].file}" alt=""></td>
+            <td><img style="width: 100px" src="/img/${product.images[0].file}" alt=""></td>
             <td>${product.name}</td>
             <td>
                 <div class="d-flex">
@@ -15,15 +17,15 @@ const showCart = (items) => {
                     <button class="btn btn-sm btn-success" onclick="addCartItem('${product.id}')"><i class="fas fa-plus"></i></button>
                 </div>
             </td>
-            <td>${(+product.price - (+product.price * +product.discount) / 100).toFixed(0)}</td>
-            <td>${((+product.price - (+product.price * +product.discount / 100)) * +quantity).toFixed(0)}</td>
+            <td>$ ${(+product.price - (+product.price * +product.discount) / 100).toFixed(0)}</td>
+            <td>$ ${((+product.price - (+product.price * +product.discount / 100)) * +quantity).toFixed(0)}</td>
             <td>
-            <button class="btn btn-sm btn-danger" onclick="removeItemFull('${product.id}')"><i class="fas fa-trash"></i></button>
+            <button class="btn btn-sm btn-danger" onclick="removeItemFull('${id}')"><i class="fas fa-trash"></i></button>
             </td>
         </tr>`
         });
     }else {
-        $('box-cart').innerHTML += `<p class="alert alert-warning">Aún no has agregado productos al carrito</p>`
+        $('msgEmpty').hidden = false;
     }
 }
 
@@ -62,7 +64,7 @@ const addCartItem = async (productId) => {
         });
 
         let result = await response.json();
-
+        console.log(result);
         if(result.ok){
             const {items} = result.data;
             showCart(items)
@@ -85,6 +87,26 @@ const removeCartItem = async (productId) => {
             headers : {
                 "Content-Type" : "application/json"
             }
+        });
+
+        let result = await response.json();
+
+        if(result.ok){
+            const {items} = result.data;
+            showCart(items)
+        }        
+
+    } catch (error) {
+        console.error
+
+    }
+}
+
+const removeItemFull = async (id) => {
+
+    try {
+        let response = await fetch('/api/carts/all/' + id,{
+            method : 'DELETE',
         });
 
         let result = await response.json();
