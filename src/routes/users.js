@@ -31,7 +31,7 @@ router
     processRegister
   )
   .get("/edit/:id", edit)
-  .put("/update/:id",validatorEditUser, update)
+  .put("/update/:id", update)
   .get("/login", login)
   .post("/login", validatorLogin, loginProcess)
   .get("/profile", userSessionCheck, profile)
