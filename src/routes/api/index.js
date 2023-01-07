@@ -1,7 +1,8 @@
-var express = require("express");
+
+let express = require("express");
 var router = express.Router();
-const { index } = require("../../controllers/api/indexController");
+const { totals } = require("../../controllers/api/indexController");
 
 /* / */
-router.get("/", index);
+router.get("/totals", totals);
 module.exports = router;
