@@ -20,6 +20,8 @@ let indexRouterApi = require('./routes/api/index');
 let productsRouterApi = require('./routes/api/products'); 
 let usersRouterApi = require('./routes/api/users');
 let cartsRouterApi = require('./routes/api/carts');
+let categoryRouterApi = require("./routes/api/categories");
+
 
 
 
@@ -56,6 +58,8 @@ app.use("/api", indexRouterApi);
 app.use("/api/products", productsRouterApi);
 app.use("/api/users", usersRouterApi);
 app.use("/api/carts", cartsRouterApi);
+app.use("/api/category", categoryRouterApi);
+
 
 
 
