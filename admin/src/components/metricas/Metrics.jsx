@@ -18,7 +18,7 @@ const Metrics = () => {
       color: "success",
     },
     categories: {
-      title: "Categorias activas",
+      title: "Categorias",
       icon: "fa-folder",
       value: 0,
       color: "warning",

@@ -12,8 +12,9 @@ function SideBar() {
       >
         <div class="sidebar-brand-icon">
           <img
-            class="w-100"
-            src="assets/images/logo-DH.png"
+            
+            style={{ width: "70px" }}
+            src="/images/logo2.jpg"
             alt="Digital House"
           />
         </div>
@@ -24,30 +25,30 @@ function SideBar() {
       <li class="nav-item active">
         <Link class="nav-link" to="/">
           <i class="fas fa-fw fa-tachometer-alt"></i>
-          <span>Dashboard - DH movies</span>
+          <span>Dashboard - New Home</span>
         </Link>
       </li>
 
       <hr class="sidebar-divider" />
 
-      <div class="sidebar-heading">Actions</div>
+      <div class="sidebar-heading"></div>
 
       <li class="nav-item">
-        <Link class="nav-link collapsed" to="/">
+        <Link class="nav-link collapsed" to="/products">
           <i class="fas fa-fw fa-folder"></i>
           <span>Products</span>
         </Link>
       </li>
 
       <li class="nav-item">
-        <Link class="nav-link" to="/">
+        <Link class="nav-link" to="/users">
           <i class="fas fa-fw fa-chart-area"></i>
           <span>Users</span>
         </Link>
       </li>
 
       <li class="nav-item">
-        <Link class="nav-link" to="/">
+        <Link class="nav-link" to="/categories">
           <i class="fas fa-fw fa-table"></i>
           <span>Categories</span>
         </Link>
