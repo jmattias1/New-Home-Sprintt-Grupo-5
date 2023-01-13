@@ -26,13 +26,30 @@ const Home = () => {
                   alt="Ultimo producto"
                 />
               </div>
-              <b>Epiphone Inspired Gibson SG Special P-90</b>
-              <p>
-                Fabricada en caoba con acabado brillante. Con 6 cuerdas y 22
-                trastes de tamaño medium jumbo. El largo de escala es de 24.72
-                .El puente es fijo.Incluye 2 micrófonos simples.Controles de
-                selector de micrófonos, tono y volumen.Sonidos fuertes y firmes
-                con un estilo propio.,
+              <b>Iphone 13 pro max</b>
+              <p style={{ fontSize:"12px" }}>
+                iPhone 13 Pro Max. El mayor avance en el sistema de cámaras Pro
+                hasta ahora. Pantalla Super Retina XDR con ProMotion que brinda
+                una respuesta más rápida y fluida. Chip A15 Bionic para un
+                rendimiento fuera de serie. Diseño resistente y la mayor
+                duración de batería jamás vista en un iPhone.1 Avisos Legales
+                (1)La duración de la batería varía según el uso y la
+                configuración. (2)La pantalla tiene esquinas redondeadas que
+                siguen el elegante diseño curvo del teléfono, y las esquinas se
+                encuentran dentro de un rectángulo estándar. Si se mide en forma
+                de rectángulo estándar, la pantalla tiene 6.68 pulgadas en
+                diagonal. El área real de visualización es menor. (3)Disponible
+                más adelante en 2021. (4)El iPhone 13 Pro Max es resistente a
+                los derrames, a las salpicaduras y al polvo, y fue probado en
+                condiciones de laboratorio controladas, con una clasificación
+                IP68 según la norma IEC 60529. La resistencia a los derrames, a
+                las salpicaduras y al polvo no es una condición permanente, y
+                podría disminuir como consecuencia del uso normal. No intentes
+                cargar un iPhone mojado; consulta el manual del usuario para ver
+                las instrucciones de limpieza y secado. La garantía no cubre
+                daños producidos por líquidos. (5)Algunas funcionalidades
+                podrían no estar disponibles en todos los países o áreas. (6)Los
+                accesorios se venden por separado
               </p>
             </div>
           </div>
