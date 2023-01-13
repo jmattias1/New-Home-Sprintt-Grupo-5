@@ -58,7 +58,7 @@ app.use("/api", indexRouterApi);
 app.use("/api/products", productsRouterApi);
 app.use("/api/users", usersRouterApi);
 app.use("/api/carts", cartsRouterApi);
-app.use("/api/category", categoryRouterApi);
+app.use("/api/categories", categoryRouterApi);
 
 
 
